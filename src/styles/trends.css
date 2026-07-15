@@ -1,0 +1,316 @@
+/* ── Trends Section ── */
+
+.trends-section {
+  padding-block: var(--space-12) var(--space-16);
+  background: var(--color-bg-secondary);
+}
+
+.trends-section__inner {
+  display: flex;
+  flex-direction: column;
+}
+
+.trends-section__header {
+  margin-bottom: var(--space-6);
+}
+
+.trends-section__title {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-tight);
+  margin-bottom: var(--space-2);
+}
+
+.trends-section__desc {
+  font-size: var(--font-size-base);
+  max-width: 32rem;
+}
+
+/* ── Trend Grid (FR-4 반응형 열 수) ──
+   모바일  (<768px)  : 1열  --grid-columns-mobile
+   태블릿  (768–1279): 2열  --grid-columns-tablet
+   데스크톱 (≥1280px) : 4열  --grid-columns-desktop
+*/
+
+.trend-grid-panel {
+  animation: trend-grid-fade var(--duration-fast) var(--ease-default);
+}
+
+@keyframes trend-grid-fade {
+  from {
+    opacity: 0.6;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.trend-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns-mobile), minmax(0, 1fr));
+  gap: var(--grid-gap);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.trend-grid__item {
+  display: flex;
+  min-width: 0;
+}
+
+.trend-grid__empty {
+  padding: var(--space-12);
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-lg);
+  background: var(--color-bg-elevated);
+  border-radius: var(--radius-lg);
+  border: 1px dashed var(--color-border-default);
+}
+
+@media (min-width: 768px) {
+  .trend-grid {
+    grid-template-columns: repeat(var(--grid-columns-tablet), minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1280px) {
+  .trend-grid {
+    grid-template-columns: repeat(var(--grid-columns-desktop), minmax(0, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trend-grid-panel {
+    animation: none;
+  }
+}
+
+/* ── Trend Card (FR-1) ── */
+
+.trend-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: var(--color-bg-elevated);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  transition: var(--transition-shadow), var(--transition-transform);
+}
+
+.trend-card__new-badge {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  z-index: 2;
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.04em;
+  color: #fff;
+  background: #dc2626;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+}
+
+.trend-card__status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+
+.trend-card__status--rising {
+  color: var(--color-success);
+  background: rgb(22 163 74 / 0.12);
+}
+
+.trend-card__status--peak {
+  color: var(--color-warning);
+  background: rgb(202 138 4 / 0.12);
+}
+
+.trend-card__status--fading {
+  color: var(--color-text-muted);
+  background: var(--color-bg-secondary);
+}
+
+.trend-card:hover {
+  box-shadow: var(--shadow-card-hover);
+}
+
+.trend-card__preview {
+  position: relative;
+  height: 120px;
+  overflow: hidden;
+}
+
+.trend-card__preview-gradient {
+  position: absolute;
+  inset: 0;
+  opacity: 0.85;
+}
+
+.trend-card__swatches {
+  position: absolute;
+  bottom: var(--space-3);
+  left: var(--space-4);
+  display: flex;
+  gap: var(--space-2);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.trend-card__swatch {
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: var(--radius-full);
+  border: 2px solid rgb(255 255 255 / 0.6);
+  box-shadow: var(--shadow-sm);
+}
+
+.trend-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-5);
+  flex: 1;
+}
+
+.trend-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.trend-card__difficulty {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-secondary);
+  color: var(--color-text-muted);
+}
+
+.trend-card__difficulty--easy {
+  color: var(--color-success);
+  background: rgb(22 163 74 / 0.1);
+}
+
+.trend-card__difficulty--medium {
+  color: var(--color-warning);
+  background: rgb(202 138 4 / 0.1);
+}
+
+.trend-card__difficulty--advanced {
+  color: var(--color-error);
+  background: rgb(220 38 38 / 0.1);
+}
+
+.trend-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.trend-card__tag {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  color: var(--tag-color, var(--color-accent));
+  background: color-mix(in srgb, var(--tag-color, var(--color-accent)) 12%, transparent);
+}
+
+.trend-card__title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-snug);
+  margin: 0;
+}
+
+.trend-card__name-en {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.trend-card__tagline {
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+  margin: 0;
+  flex: 1;
+}
+
+.trend-card__action {
+  align-self: flex-start;
+  margin-top: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-accent);
+  background: var(--color-accent-subtle);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: var(--transition-bg), var(--transition-color);
+}
+
+.trend-card__action:hover {
+  background: var(--color-accent);
+  color: var(--color-text-inverse);
+}
+
+.trend-card__footer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-5);
+  border-top: 1px solid var(--color-border-default);
+}
+
+.trend-card__updated {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+.trend-card__source {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: var(--transition-color);
+}
+
+.trend-card__source:hover {
+  color: var(--color-accent);
+}
+
+.trend-card__source-icon {
+  font-size: var(--font-size-sm);
+  line-height: 1;
+}
+
+@media (max-width: 767px) {
+  .trends-section__title {
+    font-size: var(--font-size-2xl);
+  }
+
+  .trend-card__preview {
+    height: 100px;
+  }
+}

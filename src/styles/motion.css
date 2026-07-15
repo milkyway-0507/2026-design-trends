@@ -1,0 +1,68 @@
+/* ==========================================================================
+   Global Motion Preferences
+   PRD: prefers-reduced-motion 시 모든 자동 재생 애니메이션 비활성
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
+/* FOUC 방지 스크립트가 설정한 속성과 동기화 */
+html[data-reduced-motion='true'] .preview-canvas,
+html[data-reduced-motion='true'] .preview-canvas * {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* 향후 이미지 에셋 lazy load 기본값 (PRD NFR) */
+img[loading='lazy'] {
+  content-visibility: auto;
+}
+
+/* 스크린리더 전용 · 키보드 포커스 시에만 표시되는 skip link */
+.skip-link {
+  position: absolute;
+  top: var(--space-2);
+  left: var(--space-2);
+  z-index: calc(var(--z-toast) + 1);
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-inverse);
+  background: var(--color-accent);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transform: translateY(-200%);
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skip-link {
+    transition: none;
+  }
+
+  .skip-link:focus {
+    transform: translateY(0);
+  }
+}
