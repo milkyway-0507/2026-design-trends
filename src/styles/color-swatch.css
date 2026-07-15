@@ -80,7 +80,7 @@
   opacity: 1;
 }
 
-/* ── 카드 컬러 오버레이 (호버 시 등장) ── */
+/* ── 카드 컬러 오버레이 (토글 버튼으로 제어) ── */
 .trend-card__color-overlay {
   position: absolute;
   inset: 0;
@@ -96,9 +96,39 @@
   pointer-events: none;
 }
 
-.trend-card:hover .trend-card__color-overlay {
+.trend-card__color-overlay--visible {
   opacity: 1;
   pointer-events: all;
+}
+
+.trend-card__color-toggle {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 4;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #fff;
+  padding: 0;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.trend-card__color-toggle:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.trend-card__color-toggle--active {
+  background: rgba(200, 180, 255, 0.2);
+  border-color: rgba(200, 180, 255, 0.4);
 }
 
 .trend-card__color-chip {

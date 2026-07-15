@@ -1,4 +1,4 @@
-import type { CSSProperties, KeyboardEvent } from 'react';
+import { useState, type CSSProperties, type KeyboardEvent, type MouseEvent } from 'react';
 import type { Trend, TrendStatus } from '@/types';
 import { ColorChipCopy, ColorSwatch } from '@/components/ColorSwatch';
 import { DIFFICULTY_LABELS, STATUS_LABELS } from '@/types';
@@ -10,8 +10,21 @@ interface TrendCardProps {
   onSelect: (trend: Trend) => void;
 }
 
-function ColorPreview({ colors }: { colors: Trend['colors'] }) {
+function ColorPreview({
+  colors,
+  showColors,
+  onToggleColors,
+}: {
+  colors: Trend['colors'];
+  showColors: boolean;
+  onToggleColors: () => void;
+}) {
   const previewColors = colors.slice(0, 5);
+
+  const handleToggle = (e: MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    onToggleColors();
+  };
 
   return (
     <div className="trend-card__preview" aria-hidden="true">
@@ -22,7 +35,24 @@ function ColorPreview({ colors }: { colors: Trend['colors'] }) {
         }}
       />
 
-      <div className="trend-card__color-overlay" aria-hidden="true">
+      <button
+        type="button"
+        className={`trend-card__color-toggle ${showColors ? 'trend-card__color-toggle--active' : ''}`}
+        onClick={handleToggle}
+        aria-label={showColors ? '컬러 코드 닫기' : '컬러 코드 보기'}
+        aria-pressed={showColors}
+      >
+        <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+          <circle cx="3.5" cy="7" r="2.5" fill="currentColor" opacity="0.9" />
+          <circle cx="7" cy="4" r="2.5" fill="currentColor" opacity="0.7" />
+          <circle cx="10.5" cy="7" r="2.5" fill="currentColor" opacity="0.5" />
+        </svg>
+      </button>
+
+      <div
+        className={`trend-card__color-overlay ${showColors ? 'trend-card__color-overlay--visible' : ''}`}
+        aria-hidden="true"
+      >
         {previewColors.map((color) => (
           <div key={color.hex} className="trend-card__color-chip">
             <span
@@ -82,6 +112,7 @@ function StatusIndicator({ status }: { status: TrendStatus }) {
 }
 
 export function TrendCard({ trend, onSelect }: TrendCardProps) {
+  const [showColors, setShowColors] = useState(false);
   const primarySource = trend.sources[0];
   const displayCategories = trend.categories.slice(0, 2);
   const showNewBadge = resolveTrendNewBadge(trend);
@@ -112,7 +143,11 @@ export function TrendCard({ trend, onSelect }: TrendCardProps) {
         </span>
       )}
 
-      <ColorPreview colors={trend.colors} />
+      <ColorPreview
+        colors={trend.colors}
+        showColors={showColors}
+        onToggleColors={() => setShowColors((prev) => !prev)}
+      />
 
       <div className="trend-card__body">
         <div className="trend-card__meta">

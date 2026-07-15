@@ -6,6 +6,7 @@ import {
   getStatusTabId,
   getTabId,
 } from '@/components/filters';
+import { FontGrid } from '@/components/fonts';
 import { getCategories, getStatusFilters, getTrends } from '@/data';
 import type { StatusFilterTab, Trend, TrendCategory } from '@/types';
 import { filterTrends } from '@/utils/filterTrends';
@@ -22,12 +23,19 @@ export function TrendsSection({ onSelectTrend }: TrendsSectionProps) {
   const [activeCategory, setActiveCategory] = useState<TrendCategory>('all');
   const [activeStatus, setActiveStatus] = useState<StatusFilterTab>('all');
 
+  const isTypographyView = activeCategory === 'typography';
+
   const filteredTrends = useMemo(
-    () => filterTrends(allTrends, activeCategory, activeStatus),
-    [allTrends, activeCategory, activeStatus],
+    () =>
+      isTypographyView
+        ? []
+        : filterTrends(allTrends, activeCategory, activeStatus),
+    [allTrends, activeCategory, activeStatus, isTypographyView],
   );
 
-  const panelLabelledBy = `${getTabId(activeCategory)} ${getStatusTabId(activeStatus)}`;
+  const panelLabelledBy = isTypographyView
+    ? getTabId('typography')
+    : `${getTabId(activeCategory)} ${getStatusTabId(activeStatus)}`;
 
   const handleSelect = (trend: Trend) => {
     onSelectTrend?.(trend);
@@ -38,10 +46,12 @@ export function TrendsSection({ onSelectTrend }: TrendsSectionProps) {
       <div className="container trends-section__inner">
         <header className="trends-section__header">
           <h2 id="trends-section-title" className="trends-section__title">
-            트렌드 둘러보기
+            {isTypographyView ? '2026 폰트 트렌드' : '트렌드 둘러보기'}
           </h2>
           <p className="trends-section__desc text-secondary">
-            카테고리와 상태로 관심 분야의 트렌드를 필터링하세요.
+            {isTypographyView
+              ? '실제로 적용해보고 바로 다운로드하세요'
+              : '카테고리와 상태로 관심 분야의 트렌드를 필터링하세요.'}
           </p>
         </header>
 
@@ -51,18 +61,27 @@ export function TrendsSection({ onSelectTrend }: TrendsSectionProps) {
           onChange={setActiveCategory}
         />
 
-        <StatusFilterBar
-          filters={statusFilters}
-          activeStatus={activeStatus}
-          onChange={setActiveStatus}
-        />
+        {!isTypographyView && (
+          <StatusFilterBar
+            filters={statusFilters}
+            activeStatus={activeStatus}
+            onChange={setActiveStatus}
+          />
+        )}
 
-        <TrendGrid
-          trends={filteredTrends}
-          panelId={TRENDS_PANEL_ID}
-          panelLabelledBy={panelLabelledBy}
-          onSelectTrend={handleSelect}
-        />
+        {isTypographyView ? (
+          <FontGrid
+            panelId={TRENDS_PANEL_ID}
+            panelLabelledBy={panelLabelledBy}
+          />
+        ) : (
+          <TrendGrid
+            trends={filteredTrends}
+            panelId={TRENDS_PANEL_ID}
+            panelLabelledBy={panelLabelledBy}
+            onSelectTrend={handleSelect}
+          />
+        )}
       </div>
     </section>
   );

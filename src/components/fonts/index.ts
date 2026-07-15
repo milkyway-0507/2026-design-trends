@@ -1,2 +1,2 @@
 export { FontCard } from './FontCard';
-export { FontSection } from './FontSection';
+export { FontGrid } from './FontGrid';
