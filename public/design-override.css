@@ -213,8 +213,15 @@ body {
   font-size: clamp(1rem, 1.6vw, 1.2rem);
   line-height: 1.65;
   color: var(--color-text-secondary);
-  max-width: 46ch;
+  max-width: none;
+  white-space: nowrap;
   margin-bottom: var(--space-10);
+}
+
+@media (max-width: 767px) {
+  .hero__subtitle {
+    white-space: normal;
+  }
 }
 
 .hero__cta-row {
