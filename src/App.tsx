@@ -1,7 +1,8 @@
 import { Suspense, lazy, useState } from 'react';
 import '@/styles/global.css';
+import '@/styles/design-override.css';
 import { Header, Footer } from '@/components/layout';
-import { Hero } from '@/components/hero';
+import { Hero, MarqueeBand } from '@/components/hero';
 import type { Trend } from '@/types';
 
 const TrendsSection = lazy(() =>
@@ -45,6 +46,7 @@ export default function App() {
       <Header />
       <main className="app__main" id="main-content">
         <Hero />
+        <MarqueeBand />
         <Suspense fallback={<TrendsSectionFallback />}>
           <TrendsSection onSelectTrend={setSelectedTrend} />
         </Suspense>
