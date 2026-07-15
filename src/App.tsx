@@ -11,6 +11,12 @@ const TrendsSection = lazy(() =>
   })),
 );
 
+const FontSection = lazy(() =>
+  import('@/components/fonts/FontSection').then((m) => ({
+    default: m.FontSection,
+  })),
+);
+
 const TrendPreviewModal = lazy(() =>
   import('@/components/trends/TrendPreviewModal').then((m) => ({
     default: m.TrendPreviewModal,
@@ -49,6 +55,9 @@ export default function App() {
         <MarqueeBand />
         <Suspense fallback={<TrendsSectionFallback />}>
           <TrendsSection onSelectTrend={setSelectedTrend} />
+        </Suspense>
+        <Suspense fallback={<TrendsSectionFallback />}>
+          <FontSection />
         </Suspense>
       </main>
       <Footer />

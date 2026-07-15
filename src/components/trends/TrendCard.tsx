@@ -1,5 +1,6 @@
 import type { CSSProperties } from 'react';
 import type { Trend, TrendStatus } from '@/types';
+import { ColorChipCopy, ColorSwatch } from '@/components/ColorSwatch';
 import { DIFFICULTY_LABELS, STATUS_LABELS } from '@/types';
 import { resolveTrendNewBadge } from '@/hooks/useMonthlyUpdate';
 import { getCategoryCssVar, getCategoryLabel } from '@/utils/category';
@@ -20,14 +21,24 @@ function ColorPreview({ colors }: { colors: Trend['colors'] }) {
           background: `linear-gradient(135deg, ${previewColors.map((c) => c.hex).join(', ')})`,
         }}
       />
+
+      <div className="trend-card__color-overlay" aria-hidden="true">
+        {previewColors.map((color) => (
+          <div key={color.hex} className="trend-card__color-chip">
+            <span
+              className="trend-card__color-chip-dot"
+              style={{ background: color.hex }}
+            />
+            <span className="trend-card__color-chip-hex">{color.hex}</span>
+            <ColorChipCopy hex={color.hex} name={color.name} />
+          </div>
+        ))}
+      </div>
+
       <ul className="trend-card__swatches">
         {previewColors.map((color) => (
           <li key={color.hex}>
-            <span
-              className="trend-card__swatch"
-              style={{ backgroundColor: color.hex }}
-              title={color.name}
-            />
+            <ColorSwatch hex={color.hex} name={color.name} size="sm" />
           </li>
         ))}
       </ul>
