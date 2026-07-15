@@ -1,4 +1,4 @@
-import type { CSSProperties } from 'react';
+import type { CSSProperties, KeyboardEvent } from 'react';
 import type { Trend, TrendStatus } from '@/types';
 import { ColorChipCopy, ColorSwatch } from '@/components/ColorSwatch';
 import { DIFFICULTY_LABELS, STATUS_LABELS } from '@/types';
@@ -87,11 +87,24 @@ export function TrendCard({ trend, onSelect }: TrendCardProps) {
   const showNewBadge = resolveTrendNewBadge(trend);
   const primaryCategory = trend.categories[0];
 
+  const handleSelect = () => onSelect(trend);
+
+  const handleKeyDown = (e: KeyboardEvent<HTMLElement>) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      handleSelect();
+    }
+  };
+
   return (
     <article
       className="trend-card"
       data-category={primaryCategory}
-      aria-labelledby={`trend-title-${trend.id}`}
+      role="button"
+      tabIndex={0}
+      aria-label={`${trend.nameKo} 라이브 시연 보기`}
+      onClick={handleSelect}
+      onKeyDown={handleKeyDown}
     >
       {showNewBadge && (
         <span className="trend-card__new-badge" aria-label="신규 트렌드">
@@ -130,15 +143,6 @@ export function TrendCard({ trend, onSelect }: TrendCardProps) {
         </h3>
         <p className="trend-card__name-en">{trend.nameEn}</p>
         <p className="trend-card__tagline text-secondary">{trend.tagline}</p>
-
-        <button
-          type="button"
-          className="trend-card__action"
-          onClick={() => onSelect(trend)}
-          aria-label={`${trend.nameKo} 라이브 시연 보기`}
-        >
-          라이브 시연 보기
-        </button>
       </div>
 
       <footer className="trend-card__footer">
@@ -151,6 +155,7 @@ export function TrendCard({ trend, onSelect }: TrendCardProps) {
             className="trend-card__source"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
           >
             <span className="trend-card__source-icon" aria-hidden="true">
               ↗
