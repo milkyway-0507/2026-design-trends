@@ -99,6 +99,12 @@ function migrateLegacyTrends(): Trend[] {
   });
 }
 
+export const trends: Trend[] = [
+  ...migrateLegacyTrends(),
+  ...newTrends,
+
+] // END_TRENDS
+
 export const trendsDataset: TrendsDataset = {
   meta: {
     title: '2026 디자인 트렌드',
@@ -118,7 +124,7 @@ export const trendsDataset: TrendsDataset = {
     { id: 'interaction', label: '인터랙션' },
   ],
   statusFilters: STATUS_FILTER_TABS,
-  trends: [...migrateLegacyTrends(), ...newTrends],
+  trends,
 };
 
 export function getTrendStatusCounts(): Record<TrendStatus, number> {
