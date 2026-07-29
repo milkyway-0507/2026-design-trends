@@ -11,7 +11,12 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const LLM_PROXY_URL =
   process.env.STUDY_LLM_PROXY_URL ??
   'https://vibe-llm-proxy-17280846291.asia-northeast3.run.app';
-const LLM_MODEL = process.env.STUDY_LLM_MODEL ?? 'gemini-3.1-flash-lite';
+const LLM_MODEL = process.env.STUDY_LLM_MODEL;
+const LLM_MODEL_FALLBACKS = [
+  LLM_MODEL,
+  'gemini-3.1-flash-lite',
+  'gemini-1.5-flash-lite',
+].filter(Boolean);
 
 const PREVIEW_TYPES = [
   'dopamine-gradient',
@@ -81,8 +86,23 @@ async function callLlmProxy(prompt) {
     );
   }
 
-  console.log(`LLM Proxy 호출 중… (${LLM_MODEL})`);
+  const models = [...new Set(LLM_MODEL_FALLBACKS)];
+  let lastError = null;
 
+  for (const model of models) {
+    try {
+      console.log(`LLM Proxy 호출 중… (${model})`);
+      return await callLlmProxyWithModel(prompt, token, model);
+    } catch (err) {
+      lastError = err;
+      console.warn(`⚠️ ${model} 실패:`, err.message);
+    }
+  }
+
+  throw lastError ?? new Error('LLM Proxy 호출 실패');
+}
+
+async function callLlmProxyWithModel(prompt, token, model) {
   const response = await fetch(`${LLM_PROXY_URL}/api/v1/generate`, {
     method: 'POST',
     headers: {
@@ -91,7 +111,7 @@ async function callLlmProxy(prompt) {
     },
     body: JSON.stringify({
       provider: 'google',
-      model: LLM_MODEL,
+      model,
       messages: [{ role: 'user', content: prompt }],
       maxOutputTokens: 4096,
     }),
@@ -100,7 +120,7 @@ async function callLlmProxy(prompt) {
   const bodyText = await response.text();
 
   if (!response.ok) {
-    throw new Error(`LLM Proxy 오류 (${response.status}): ${bodyText}`);
+    throw new Error(`LLM Proxy 오류 (${response.status}, ${model}): ${bodyText}`);
   }
 
   let data;
