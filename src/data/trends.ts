@@ -237,6 +237,140 @@ export const trends: Trend[] = [
     "lastUpdated": "2026-07-29",
     "month": "7월 신규"
   },
+
+  {
+    "id": "generative-ui",
+    "nameKo": "생성형 인터페이스",
+    "nameEn": "Generative UI",
+    "tagline": "사용자 맥락에 따라 실시간으로 변화하는 능동적 레이아웃",
+    "description": "고정된 컴포넌트가 아닌, LLM 기반의 실시간 UI 구성 방식입니다. 사용자의 의도에 맞춰 인터페이스가 즉각적으로 생성되고 최적화됩니다.",
+    "detailDescription": "전통적인 사전 정의된 UI에서 벗어나, 사용자가 입력하는 데이터와 맥락에 따라 컴포넌트를 즉석에서 조립하여 보여주는 방식입니다. 이는 개인화된 워크플로우를 극대화하며 불필요한 인지 부하를 획기적으로 줄여줍니다.",
+    "categories": [
+      "ai-ux",
+      "layout"
+    ],
+    "difficulty": "advanced",
+    "keywords": [
+      "LLM",
+      "Adaptive UI",
+      "Dynamic Composition"
+    ],
+    "colors": [
+      {
+        "name": "AI Blue",
+        "hex": "#2563EB",
+        "role": "primary"
+      },
+      {
+        "name": "Glow White",
+        "hex": "#F8FAFC",
+        "role": "accent"
+      },
+      {
+        "name": "Neural Slate",
+        "hex": "#64748B",
+        "role": "secondary"
+      },
+      {
+        "name": "Deep Space",
+        "hex": "#0F172A",
+        "role": "background"
+      },
+      {
+        "name": "Soft Gray",
+        "hex": "#E2E8F0",
+        "role": "neutral"
+      }
+    ],
+    "brands": [
+      {
+        "name": "Vercel AI SDK",
+        "context": "컴포넌트 단위의 AI 인터페이스 라이브러리 제공",
+        "url": "https://sdk.vercel.ai"
+      }
+    ],
+    "sources": [
+      {
+        "title": "The Future of Generative UI",
+        "url": "https://design.com/gen-ui",
+        "publisher": "UX Trends 2026"
+      }
+    ],
+    "previewType": "generative-ui",
+    "publishedAt": "2026-07",
+    "updatedAt": "2026-07-29",
+    "isNew": true,
+    "status": "rising",
+    "lastUpdated": "2026-07-29",
+    "month": "7월 신규"
+  },
+
+  {
+    "id": "low-stimulus",
+    "nameKo": "저자극 인터페이스",
+    "nameEn": "Low Stimulus",
+    "tagline": "디지털 피로도를 줄이는 평온한 정보 디자인",
+    "description": "화려한 애니메이션과 강렬한 색상을 배제하고, 차분한 톤과 여백을 활용한 휴식형 인터페이스입니다. 사용자의 정신적 에너지를 보존하는 것에 최우선 가치를 둡니다.",
+    "detailDescription": "지나친 알림과 복잡한 정보 계층 구조를 탈피하여, 고요하고 절제된 디자인 언어를 구축합니다. 미세한 촉각적 반응과 은은한 대비를 통해 편안한 사용자 경험을 제공하며 심리적 안정을 도모합니다.",
+    "categories": [
+      "visual",
+      "accessibility"
+    ],
+    "difficulty": "medium",
+    "keywords": [
+      "Calm Tech",
+      "Minimalism",
+      "Well-being"
+    ],
+    "colors": [
+      {
+        "name": "Sage Green",
+        "hex": "#A7B8A9",
+        "role": "primary"
+      },
+      {
+        "name": "Warm Sand",
+        "hex": "#F4EFEA",
+        "role": "accent"
+      },
+      {
+        "name": "Muted Stone",
+        "hex": "#D1D5DB",
+        "role": "secondary"
+      },
+      {
+        "name": "Soft Mist",
+        "hex": "#F9FAFB",
+        "role": "background"
+      },
+      {
+        "name": "Charcoal Soft",
+        "hex": "#374151",
+        "role": "neutral"
+      }
+    ],
+    "brands": [
+      {
+        "name": "Calm",
+        "context": "저자극 디자인의 선구적인 앱 사례",
+        "url": "https://www.calm.com"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Design for Mental Ease",
+        "url": "https://design.com/low-stim",
+        "publisher": "UX Journal"
+      }
+    ],
+    "previewType": "low-stimulus",
+    "publishedAt": "2026-07",
+    "updatedAt": "2026-07-29",
+    "isNew": true,
+    "status": "rising",
+    "lastUpdated": "2026-07-29",
+    "month": "7월 신규"
+  },
 ] // END_TRENDS
 
 export const trendsDataset: TrendsDataset = {
