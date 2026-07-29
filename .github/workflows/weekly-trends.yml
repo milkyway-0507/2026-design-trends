@@ -30,15 +30,42 @@ jobs:
       - name: 의존성 설치
         run: npm ci
 
-      - name: API 토큰 확인
+      - name: API 토큰 및 Proxy 연결 확인
         env:
           STUDY_LLM_API_TOKEN: ${{ secrets.STUDY_LLM_API_TOKEN }}
         run: |
           if [ -z "$STUDY_LLM_API_TOKEN" ]; then
-            echo "::error::STUDY_LLM_API_TOKEN secret이 비어 있습니다. Settings → Secrets → Actions 에서 추가하세요."
+            echo "::error::STUDY_LLM_API_TOKEN secret이 비어 있습니다."
             exit 1
           fi
-          echo "STUDY_LLM_API_TOKEN 설정 확인됨"
+
+          case "$STUDY_LLM_API_TOKEN" in
+            study_live_*|study_test_*)
+              echo "✓ 토큰 형식 OK (study_* prefix)"
+              ;;
+            *)
+              echo "::error::토큰이 study_live_ 로 시작하지 않습니다. 스터디 포털에서 발급한 API 토큰을 사용하세요."
+              exit 1
+              ;;
+          esac
+
+          HTTP_CODE=$(curl -sS -o /tmp/llm-test.json -w "%{http_code}" \
+            -X POST "https://vibe-llm-proxy-17280846291.asia-northeast3.run.app/api/v1/generate" \
+            -H "Authorization: Bearer $STUDY_LLM_API_TOKEN" \
+            -H "Content-Type: application/json" \
+            -d '{"provider":"google","model":"gemini-3.1-flash-lite","messages":[{"role":"user","content":"ping"}],"maxOutputTokens":16}')
+
+          echo "LLM Proxy HTTP status: $HTTP_CODE"
+          echo "Response preview:"
+          head -c 400 /tmp/llm-test.json || true
+          echo ""
+
+          if [ "$HTTP_CODE" != "200" ]; then
+            echo "::error::LLM Proxy 연결 실패 (HTTP $HTTP_CODE). 스터디 포털에서 토큰 재발급 후 Secret을 업데이트하세요."
+            exit 1
+          fi
+
+          echo "✓ LLM Proxy 연결 성공"
 
       - name: LLM Proxy로 트렌드 생성
         env:
