@@ -146,6 +146,10 @@ function normalizeTrend(trend, { publishedAt, updatedAt, monthLabel }) {
   if (!['rising', 'peak', 'fading'].includes(trend.status)) {
     trend.status = 'rising';
   }
+  if (!['easy', 'medium', 'advanced'].includes(trend.difficulty)) {
+    console.log(`⚠️ difficulty 보정: ${trend.difficulty} → advanced`);
+    trend.difficulty = 'advanced';
+  }
   return trend;
 }
 

@@ -115,7 +115,7 @@ export const trends: Trend[] = [
       "ai-ux",
       "layout"
     ],
-    "difficulty": "hard",
+    "difficulty": "advanced",
     "keywords": [
       "AI",
       "적응형 인터페이스",
