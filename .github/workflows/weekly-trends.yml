@@ -1,3 +1,4 @@
+# STUDY_LLM_API_TOKEN secret 필요 (study_live_... 형식)
 name: 매주 트렌드 자동 업데이트
 
 on:
