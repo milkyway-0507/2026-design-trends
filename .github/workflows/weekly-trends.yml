@@ -35,6 +35,9 @@ jobs:
         env:
           STUDY_LLM_API_TOKEN: ${{ secrets.STUDY_LLM_API_TOKEN }}
         run: |
+          # 공백·따옴표 제거
+          STUDY_LLM_API_TOKEN=$(printf '%s' "$STUDY_LLM_API_TOKEN" | tr -d '[:space:]' | sed 's/^"//;s/"$//')
+
           if [ -z "$STUDY_LLM_API_TOKEN" ]; then
             echo "::error::STUDY_LLM_API_TOKEN secret이 비어 있습니다."
             exit 1
@@ -42,11 +45,11 @@ jobs:
 
           case "$STUDY_LLM_API_TOKEN" in
             study_live_*|study_test_*)
-              echo "✓ 토큰 형식 OK (study_* prefix)"
+              echo "✓ 토큰 prefix OK (study_*)"
               ;;
             *)
-              echo "::error::토큰이 study_live_ 로 시작하지 않습니다. 스터디 포털에서 발급한 API 토큰을 사용하세요."
-              exit 1
+              echo "::warning::토큰이 study_live_ 로 시작하지 않습니다. HTTP 연결 테스트로 검증합니다."
+              echo "토큰 앞 12자: $(printf '%.12s' "$STUDY_LLM_API_TOKEN")..."
               ;;
           esac
 
@@ -61,12 +64,23 @@ jobs:
           head -c 400 /tmp/llm-test.json || true
           echo ""
 
-          if [ "$HTTP_CODE" != "200" ]; then
-            echo "::error::LLM Proxy 연결 실패 (HTTP $HTTP_CODE). 스터디 포털에서 토큰 재발급 후 Secret을 업데이트하세요."
-            exit 1
-          fi
-
-          echo "✓ LLM Proxy 연결 성공"
+          case "$HTTP_CODE" in
+            200)
+              echo "✓ LLM Proxy 연결 성공"
+              ;;
+            401)
+              echo "::error::HTTP 401 — 토큰이 유효하지 않습니다. 스터디 포털에서 study_live_... 토큰을 재발급하세요."
+              exit 1
+              ;;
+            403)
+              echo "::error::HTTP 403 — 권한 또는 사용 한도 문제입니다. 스터디 포털에서 확인하세요."
+              exit 1
+              ;;
+            *)
+              echo "::error::LLM Proxy 연결 실패 (HTTP $HTTP_CODE). 위 Response preview를 확인하세요."
+              exit 1
+              ;;
+          esac
 
       - name: LLM Proxy로 트렌드 생성
         env:
