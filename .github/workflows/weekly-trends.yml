@@ -106,4 +106,3 @@ jobs:
             - 머지 시 Vercel 자동 배포됩니다
           branch: "weekly-trend-$(date +'%Y%m%d')"
           base: main
-          labels: auto-update,trends
