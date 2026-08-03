@@ -371,6 +371,140 @@ export const trends: Trend[] = [
     "lastUpdated": "2026-07-29",
     "month": "7월 신규"
   },
+
+  {
+    "id": "generative-ui",
+    "nameKo": "생성형 사용자 인터페이스",
+    "nameEn": "Generative UI",
+    "tagline": "사용자의 의도에 따라 실시간으로 변하는 맞춤형 인터페이스",
+    "description": "고정된 레이아웃에서 벗어나 AI가 사용자의 맥락과 의도를 분석하여 즉각적으로 UI 구성 요소를 생성합니다. 각 사용자에게 최적화된 맞춤형 화면을 실시간으로 제공하여 경험의 효율성을 극대화합니다.",
+    "detailDescription": "생성형 UI는 기존의 컴포넌트 라이브러리를 동적으로 조합하여 사용자에게 필요한 정보와 기능을 실시간으로 재배치합니다. 이는 단순히 데이터를 보여주는 것을 넘어, 사용자의 작업 흐름에 맞춰 필요한 버튼, 데이터 시각화, 내비게이션을 즉석에서 생성함으로써 정보 과부하를 줄입니다.",
+    "categories": [
+      "ai-ux",
+      "layout"
+    ],
+    "difficulty": "advanced",
+    "keywords": [
+      "생성형AI",
+      "동적레이아웃",
+      "개인화"
+    ],
+    "colors": [
+      {
+        "name": "Electric Blue",
+        "hex": "#0066FF",
+        "role": "primary"
+      },
+      {
+        "name": "Soft Lavender",
+        "hex": "#E6E6FA",
+        "role": "accent"
+      },
+      {
+        "name": "Slate Gray",
+        "hex": "#4A4A4A",
+        "role": "secondary"
+      },
+      {
+        "name": "Pure White",
+        "hex": "#FFFFFF",
+        "role": "background"
+      },
+      {
+        "name": "Cool Gray",
+        "hex": "#F4F4F4",
+        "role": "neutral"
+      }
+    ],
+    "brands": [
+      {
+        "name": "Vercel AI SDK",
+        "context": "차세대 웹 인터페이스 생성 도구",
+        "url": "https://sdk.vercel.ai"
+      }
+    ],
+    "sources": [
+      {
+        "title": "The Future of Generative UI",
+        "url": "https://uxdesign.cc/generative-ui",
+        "publisher": "UX Collective"
+      }
+    ],
+    "previewType": "generative-ui",
+    "publishedAt": "2026-08",
+    "updatedAt": "2026-08-03",
+    "isNew": true,
+    "status": "rising",
+    "lastUpdated": "2026-08-03",
+    "month": "8월 신규"
+  },
+
+  {
+    "id": "low-stimulus",
+    "nameKo": "저자극 인터페이스",
+    "nameEn": "Low Stimulus Design",
+    "tagline": "디지털 피로를 해소하는 평온하고 차분한 사용자 경험",
+    "description": "지나친 알림과 화려한 시각 요소를 배제하고 사용자의 인지 부하를 최소화합니다. 절제된 색상 팔레트와 여백의 미를 강조하여 사용자가 본연의 작업에 집중할 수 있는 환경을 만듭니다.",
+    "detailDescription": "저자극 디자인은 스트레스 없는 디지털 환경을 지향하며, 사용자가 인터페이스로부터 느끼는 긴장감을 낮춥니다. 미묘한 블러 효과, 차분한 채도의 색상, 완만한 모션 전환을 활용하여 눈의 피로를 덜고 심리적 안정감을 제공하는 데 중점을 둡니다.",
+    "categories": [
+      "visual",
+      "accessibility"
+    ],
+    "difficulty": "medium",
+    "keywords": [
+      "디지털웰빙",
+      "인지부하감소",
+      "심리적안정"
+    ],
+    "colors": [
+      {
+        "name": "Sage Green",
+        "hex": "#8A9A8B",
+        "role": "primary"
+      },
+      {
+        "name": "Muted Sand",
+        "hex": "#D2B48C",
+        "role": "accent"
+      },
+      {
+        "name": "Deep Moss",
+        "hex": "#4A5D4E",
+        "role": "secondary"
+      },
+      {
+        "name": "Warm White",
+        "hex": "#F9F7F2",
+        "role": "background"
+      },
+      {
+        "name": "Soft Beige",
+        "hex": "#E8E4DD",
+        "role": "neutral"
+      }
+    ],
+    "brands": [
+      {
+        "name": "Calm App",
+        "context": "저자극 인터페이스의 선두주자",
+        "url": "https://www.calm.com"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Designing for Low Stimulus",
+        "url": "https://medium.com/low-stimulus",
+        "publisher": "Design Trends Daily"
+      }
+    ],
+    "previewType": "low-stimulus",
+    "publishedAt": "2026-08",
+    "updatedAt": "2026-08-03",
+    "isNew": true,
+    "status": "rising",
+    "lastUpdated": "2026-08-03",
+    "month": "8월 신규"
+  },
 ] // END_TRENDS
 
 export const trendsDataset: TrendsDataset = {
@@ -378,7 +512,7 @@ export const trendsDataset: TrendsDataset = {
     title: '2026 디자인 트렌드',
     subtitle:
       '올해 주목해야 할 디자인 방향을 한국어로 큐레이션하고 직접 체험하세요.',
-    lastUpdated: '2026-07-29',
+    lastUpdated: '2026-08-03',
   },
   categories: [
     { id: 'all', label: '전체' },
