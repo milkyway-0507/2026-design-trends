@@ -371,6 +371,140 @@ export const trends: Trend[] = [
     "lastUpdated": "2026-07-29",
     "month": "7월 신규"
   },
+
+  {
+    "id": "ambient-ai-interface",
+    "nameKo": "앰비언트 AI 인터페이스",
+    "nameEn": "Ambient AI Interface",
+    "tagline": "사용자의 맥락에 은밀하게 녹아드는 지능형 UI",
+    "description": "사용자가 직접 명령을 내리지 않아도 환경과 문맥을 파악해 선제적으로 정보를 제시합니다. 가시적인 버튼보다는 부드러운 상태 변화 중심의 인터페이스를 지향합니다.",
+    "detailDescription": "전통적인 대화형 UI에서 벗어나, 운영체제나 앱이 사용자 의도를 사전에 감지하고 UI 요소가 실시간으로 재구성되는 개념입니다. 이는 인지 부하를 획기적으로 줄이며, 기술이 도구가 아닌 환경처럼 느껴지게 만듭니다.",
+    "categories": [
+      "ai-ux",
+      "interaction"
+    ],
+    "difficulty": "advanced",
+    "keywords": [
+      "앰비언트",
+      "상황인지",
+      "비가시적UI"
+    ],
+    "colors": [
+      {
+        "name": "Deep Ocean",
+        "hex": "#0A192F",
+        "role": "primary"
+      },
+      {
+        "name": "Glow Blue",
+        "hex": "#64FFDA",
+        "role": "accent"
+      },
+      {
+        "name": "Mist Grey",
+        "hex": "#CCD6F6",
+        "role": "secondary"
+      },
+      {
+        "name": "Night Sky",
+        "hex": "#020C1B",
+        "role": "background"
+      },
+      {
+        "name": "Slate",
+        "hex": "#8892B0",
+        "role": "neutral"
+      }
+    ],
+    "brands": [
+      {
+        "name": "Apple AI",
+        "context": "주변 상황 기반 인텔리전스 구현",
+        "url": "https://apple.com"
+      }
+    ],
+    "sources": [
+      {
+        "title": "The Future of Invisible UI",
+        "url": "https://uxdesign.cc/future-invisible",
+        "publisher": "UX Design Collective"
+      }
+    ],
+    "previewType": "ambient-ai",
+    "publishedAt": "2026-08",
+    "updatedAt": "2026-08-05",
+    "isNew": true,
+    "status": "rising",
+    "lastUpdated": "2026-08-05",
+    "month": "8월 신규"
+  },
+
+  {
+    "id": "liquid-glass-morphism",
+    "nameKo": "리퀴드 글래스모피즘",
+    "nameEn": "Liquid Glassmorphism",
+    "tagline": "흐르는 듯한 투명도와 액체적 질감의 조화",
+    "description": "기존의 정적인 글래스모피즘을 넘어, 액체가 흐르는 듯한 유동적인 왜곡 효과와 동적인 조명 반사를 결합했습니다. 시각적 깊이감과 미래지향적인 세련미를 동시에 제공합니다.",
+    "detailDescription": "스크롤이나 마우스 움직임에 반응하여 굴절률이 실시간으로 변하는 글래스 레이어를 사용합니다. 이는 디지털 공간에 유기적인 생명력을 불어넣으며, 몰입감 넘치는 UI 레이아웃을 구축하는 데 효과적입니다.",
+    "categories": [
+      "visual",
+      "motion"
+    ],
+    "difficulty": "medium",
+    "keywords": [
+      "글래스모피즘",
+      "유동적질감",
+      "현대적UI"
+    ],
+    "colors": [
+      {
+        "name": "Vivid Purple",
+        "hex": "#8B5CF6",
+        "role": "primary"
+      },
+      {
+        "name": "Neon Pink",
+        "hex": "#EC4899",
+        "role": "accent"
+      },
+      {
+        "name": "Crystal White",
+        "hex": "#FFFFFF",
+        "role": "secondary"
+      },
+      {
+        "name": "Dark Velvet",
+        "hex": "#1F2937",
+        "role": "background"
+      },
+      {
+        "name": "Cloud Grey",
+        "hex": "#F3F4F6",
+        "role": "neutral"
+      }
+    ],
+    "brands": [
+      {
+        "name": "Fluid Labs",
+        "context": "동적 글래스 컴포넌트 라이브러리",
+        "url": "https://fluidlabs.design"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Trends in UI Materiality",
+        "url": "https://dribbble.com/trends",
+        "publisher": "Dribbble"
+      }
+    ],
+    "previewType": "liquid-glass",
+    "publishedAt": "2026-08",
+    "updatedAt": "2026-08-05",
+    "isNew": true,
+    "status": "rising",
+    "lastUpdated": "2026-08-05",
+    "month": "8월 신규"
+  },
 ] // END_TRENDS
 
 export const trendsDataset: TrendsDataset = {
@@ -378,7 +512,7 @@ export const trendsDataset: TrendsDataset = {
     title: '2026 디자인 트렌드',
     subtitle:
       '올해 주목해야 할 디자인 방향을 한국어로 큐레이션하고 직접 체험하세요.',
-    lastUpdated: '2026-07-29',
+    lastUpdated: '2026-08-05',
   },
   categories: [
     { id: 'all', label: '전체' },
