@@ -1,20 +1,24 @@
 {
   "headers": [
     {
-      "source": "/og-image.(png|jpg)",
+      "source": "/og-share.png",
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "public, max-age=86400, stale-while-revalidate=604800"
+          "value": "public, max-age=604800, immutable"
         },
         {
           "key": "Access-Control-Allow-Origin",
           "value": "*"
+        },
+        {
+          "key": "Content-Type",
+          "value": "image/png"
         }
       ]
     },
     {
-      "source": "/(.*)",
+      "source": "/((?!og-share\\.png|og-image\\.(png|jpg)|favicon\\.svg|theme-init\\.js|robots\\.txt|sitemap\\.xml|assets/).*)",
       "headers": [
         {
           "key": "X-Content-Type-Options",
