@@ -10,15 +10,11 @@
         {
           "key": "Access-Control-Allow-Origin",
           "value": "*"
-        },
-        {
-          "key": "Content-Type",
-          "value": "image/png"
         }
       ]
     },
     {
-      "source": "/((?!og-share\\.png|og-image\\.(png|jpg)|favicon\\.svg|theme-init\\.js|robots\\.txt|sitemap\\.xml|assets/).*)",
+      "source": "/(.*)",
       "headers": [
         {
           "key": "X-Content-Type-Options",
