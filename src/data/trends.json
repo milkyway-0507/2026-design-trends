@@ -5,7 +5,6 @@
     "lastUpdated": "2026-07-08"
   },
   "categories": [
-    { "id": "all", "label": "전체" },
     { "id": "color", "label": "컬러" },
     { "id": "typography", "label": "타이포" },
     { "id": "motion", "label": "모션" },

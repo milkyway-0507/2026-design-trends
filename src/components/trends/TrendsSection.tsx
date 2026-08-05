@@ -26,7 +26,7 @@ export function TrendsSection({
   const categories = getCategories();
   const statusFilters = getStatusFilters();
   const allTrends = getTrends();
-  const [activeCategory, setActiveCategory] = useState<TrendCategory>('all');
+  const [activeCategory, setActiveCategory] = useState<TrendCategory>('color');
   const [activeStatus, setActiveStatus] = useState<StatusFilterTab>('all');
 
   const isTypographyView = activeCategory === 'typography';

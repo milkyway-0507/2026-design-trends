@@ -51,7 +51,7 @@ function ModalFallback() {
 export default function App() {
   const [selectedTrend, setSelectedTrend] = useState<Trend | null>(null);
   const [filteredTrends, setFilteredTrends] = useState<Trend[]>([]);
-  const [activeCategory, setActiveCategory] = useState<TrendCategory>('all');
+  const [activeCategory, setActiveCategory] = useState<TrendCategory>('color');
 
   const selectedIndex = selectedTrend
     ? filteredTrends.findIndex((t) => t.id === selectedTrend.id)

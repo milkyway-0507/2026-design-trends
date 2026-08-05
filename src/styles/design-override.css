@@ -313,7 +313,7 @@ body {
 .marquee-band__item,
 [class*='marquee-item'],
 [class*='marquee__item'] {
-  color: rgba(255, 255, 255, 0.38) !important;
+  color: var(--color-text-secondary);
 }
 
 .marquee-band__item::after {

@@ -515,7 +515,6 @@ export const trendsDataset: TrendsDataset = {
     lastUpdated: '2026-08-05',
   },
   categories: [
-    { id: 'all', label: '전체' },
     { id: 'color', label: '컬러' },
     { id: 'typography', label: '타이포' },
     { id: 'motion', label: '모션' },

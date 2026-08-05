@@ -19,8 +19,9 @@ describe('data layer', () => {
     expect(getMeta().title).toBe('2026 디자인 트렌드');
   });
 
-  it('returns 9 category filters including "all"', () => {
-    expect(getCategories()).toHaveLength(9);
+  it('returns 8 category filters without "all"', () => {
+    expect(getCategories()).toHaveLength(8);
+    expect(getCategories().some((c) => c.id === 'all')).toBe(false);
   });
 
   it('returns 5 status filters', () => {
