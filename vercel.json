@@ -1,6 +1,19 @@
 {
   "headers": [
     {
+      "source": "/share-thumb.png",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800, immutable"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
+      ]
+    },
+    {
       "source": "/og-share.png",
       "headers": [
         {
