@@ -29,8 +29,36 @@
   flex-wrap: nowrap;
   overflow-x: auto;
   scrollbar-width: none;
-  margin-bottom: var(--space-10);
   padding-bottom: var(--space-1);
+}
+
+.font-section__filter-groups {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+}
+
+.font-section__filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.font-section__filter-label {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.font-section__empty {
+  margin: 0;
+  padding: var(--space-10) var(--space-4);
+  text-align: center;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
 }
 
 .font-section__filters::-webkit-scrollbar {
@@ -140,6 +168,23 @@
   background: var(--color-text-primary);
   color: var(--color-bg-primary);
   letter-spacing: 0.06em;
+}
+
+.font-card__locale-badge {
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: var(--radius-full);
+  background: rgba(59, 130, 246, 0.12);
+  color: #60a5fa;
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  letter-spacing: 0.02em;
+}
+
+.font-card__locale-badge--jp {
+  background: rgba(244, 63, 94, 0.12);
+  color: #fb7185;
+  border-color: rgba(244, 63, 94, 0.25);
 }
 
 .font-card__status {

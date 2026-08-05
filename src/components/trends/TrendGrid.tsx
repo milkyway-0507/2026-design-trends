@@ -1,8 +1,9 @@
-import type { Trend } from '@/types';
+import type { Trend, TrendCategory } from '@/types';
 import { TrendCard } from './TrendCard';
 
 interface TrendGridProps {
   trends: Trend[];
+  activeCategory: TrendCategory;
   panelId: string;
   panelLabelledBy: string;
   onSelectTrend: (trend: Trend) => void;
@@ -10,10 +11,13 @@ interface TrendGridProps {
 
 export function TrendGrid({
   trends,
+  activeCategory,
   panelId,
   panelLabelledBy,
   onSelectTrend,
 }: TrendGridProps) {
+  const showColorThumbnail = activeCategory === 'color';
+
   return (
     <div
       id={panelId}
@@ -33,7 +37,11 @@ export function TrendGrid({
         >
           {trends.map((trend) => (
             <li key={trend.id} className="trend-grid__item" role="listitem">
-              <TrendCard trend={trend} onSelect={onSelectTrend} />
+              <TrendCard
+                trend={trend}
+                onSelect={onSelectTrend}
+                showColorThumbnail={showColorThumbnail}
+              />
             </li>
           ))}
         </ul>

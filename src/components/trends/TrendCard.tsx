@@ -1,6 +1,15 @@
-import { useState, type CSSProperties, type KeyboardEvent, type MouseEvent } from 'react';
+import {
+  Suspense,
+  useEffect,
+  useRef,
+  useState,
+  type CSSProperties,
+  type KeyboardEvent,
+  type MouseEvent,
+} from 'react';
 import type { Trend, TrendStatus } from '@/types';
 import { ColorChipCopy, ColorSwatch } from '@/components/ColorSwatch';
+import { TrendPreview } from '@/components/previews';
 import { DIFFICULTY_LABELS, STATUS_LABELS } from '@/types';
 import { resolveTrendNewBadge } from '@/hooks/useMonthlyUpdate';
 import { getCategoryCssVar, getCategoryLabel } from '@/utils/category';
@@ -8,18 +17,23 @@ import { getCategoryCssVar, getCategoryLabel } from '@/utils/category';
 interface TrendCardProps {
   trend: Trend;
   onSelect: (trend: Trend) => void;
+  showColorThumbnail: boolean;
 }
 
-function ColorPreview({
-  colors,
+function CardPreview({
+  trend,
+  showColorThumbnail,
+  isVisible,
   showColors,
   onToggleColors,
 }: {
-  colors: Trend['colors'];
+  trend: Trend;
+  showColorThumbnail: boolean;
+  isVisible: boolean;
   showColors: boolean;
   onToggleColors: () => void;
 }) {
-  const previewColors = colors.slice(0, 5);
+  const previewColors = trend.colors.slice(0, 5);
 
   const handleToggle = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
@@ -28,50 +42,66 @@ function ColorPreview({
 
   return (
     <div className="trend-card__preview" aria-hidden="true">
-      <div
-        className="trend-card__preview-gradient"
-        style={{
-          background: `linear-gradient(135deg, ${previewColors.map((c) => c.hex).join(', ')})`,
-        }}
-      />
-
-      <button
-        type="button"
-        className={`trend-card__color-toggle ${showColors ? 'trend-card__color-toggle--active' : ''}`}
-        onClick={handleToggle}
-        aria-label={showColors ? '컬러 코드 닫기' : '컬러 코드 보기'}
-        aria-pressed={showColors}
-      >
-        <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
-          <circle cx="3.5" cy="7" r="2.5" fill="currentColor" opacity="0.9" />
-          <circle cx="7" cy="4" r="2.5" fill="currentColor" opacity="0.7" />
-          <circle cx="10.5" cy="7" r="2.5" fill="currentColor" opacity="0.5" />
-        </svg>
-      </button>
-
-      <div
-        className={`trend-card__color-overlay ${showColors ? 'trend-card__color-overlay--visible' : ''}`}
-        aria-hidden="true"
-      >
-        {previewColors.map((color) => (
-          <div key={color.hex} className="trend-card__color-chip">
-            <span
-              className="trend-card__color-chip-dot"
-              style={{ background: color.hex }}
-            />
-            <span className="trend-card__color-chip-hex">{color.hex}</span>
-            <ColorChipCopy hex={color.hex} name={color.name} />
+      {showColorThumbnail ? (
+        <div
+          className="trend-card__preview-gradient"
+          style={{
+            background: `linear-gradient(135deg, ${trend.colors.map((c) => c.hex).join(', ')})`,
+          }}
+        />
+      ) : isVisible ? (
+        <Suspense fallback={<div className="trend-card__preview-skeleton" />}>
+          <div className="trend-card__preview-live">
+            <TrendPreview trend={trend} variant="card" />
           </div>
-        ))}
-      </div>
+        </Suspense>
+      ) : (
+        <div className="trend-card__preview-skeleton" />
+      )}
 
-      <ul className="trend-card__swatches">
-        {previewColors.map((color) => (
-          <li key={color.hex}>
-            <ColorSwatch hex={color.hex} name={color.name} size="sm" />
-          </li>
-        ))}
-      </ul>
+      {showColorThumbnail && (
+        <>
+          <ul className="trend-card__swatches">
+            {previewColors.map((color) => (
+              <li key={color.hex}>
+                <ColorSwatch hex={color.hex} name={color.name} size="sm" />
+              </li>
+            ))}
+          </ul>
+
+          <button
+            type="button"
+            className={`trend-card__color-toggle ${showColors ? 'trend-card__color-toggle--active' : ''}`}
+            onClick={handleToggle}
+            aria-label={showColors ? '컬러 코드 닫기' : '컬러 코드 보기'}
+            aria-pressed={showColors}
+          >
+            <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+              <circle cx="3.5" cy="7" r="2.5" fill="currentColor" opacity="0.9" />
+              <circle cx="7" cy="4" r="2.5" fill="currentColor" opacity="0.7" />
+              <circle cx="10.5" cy="7" r="2.5" fill="currentColor" opacity="0.5" />
+            </svg>
+          </button>
+
+          {showColors && (
+            <div
+              className="trend-card__color-overlay trend-card__color-overlay--visible"
+              aria-hidden="true"
+            >
+              {previewColors.map((color) => (
+                <div key={color.hex} className="trend-card__color-chip">
+                  <span
+                    className="trend-card__color-chip-dot"
+                    style={{ background: color.hex }}
+                  />
+                  <span className="trend-card__color-chip-hex">{color.hex}</span>
+                  <ColorChipCopy hex={color.hex} name={color.name} />
+                </div>
+              ))}
+            </div>
+          )}
+        </>
+      )}
     </div>
   );
 }
@@ -111,12 +141,39 @@ function StatusIndicator({ status }: { status: TrendStatus }) {
   );
 }
 
-export function TrendCard({ trend, onSelect }: TrendCardProps) {
+export function TrendCard({
+  trend,
+  onSelect,
+  showColorThumbnail,
+}: TrendCardProps) {
+  const cardRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
   const [showColors, setShowColors] = useState(false);
   const primarySource = trend.sources[0];
   const displayCategories = trend.categories.slice(0, 2);
   const showNewBadge = resolveTrendNewBadge(trend);
   const primaryCategory = trend.categories[0];
+
+  useEffect(() => {
+    if (!showColorThumbnail) setShowColors(false);
+  }, [showColorThumbnail]);
+
+  useEffect(() => {
+    if (showColorThumbnail) return;
+
+    const node = cardRef.current;
+    if (!node) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setIsVisible(true);
+      },
+      { rootMargin: '120px' },
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [showColorThumbnail]);
 
   const handleSelect = () => onSelect(trend);
 
@@ -129,6 +186,7 @@ export function TrendCard({ trend, onSelect }: TrendCardProps) {
 
   return (
     <article
+      ref={cardRef}
       className="trend-card"
       data-category={primaryCategory}
       role="button"
@@ -143,8 +201,10 @@ export function TrendCard({ trend, onSelect }: TrendCardProps) {
         </span>
       )}
 
-      <ColorPreview
-        colors={trend.colors}
+      <CardPreview
+        trend={trend}
+        showColorThumbnail={showColorThumbnail}
+        isVisible={isVisible}
         showColors={showColors}
         onToggleColors={() => setShowColors((prev) => !prev)}
       />

@@ -1,4 +1,5 @@
-import { useCallback, useState, type CSSProperties, type MouseEvent } from 'react';
+import { type CSSProperties } from 'react';
+import { useColorCopy } from '@/hooks/useColorCopy';
 
 interface SwatchProps {
   hex: string;
@@ -6,48 +7,26 @@ interface SwatchProps {
   size?: 'sm' | 'md';
 }
 
-async function copyHex(hex: string): Promise<void> {
-  try {
-    await navigator.clipboard.writeText(hex);
-  } catch {
-    const el = document.createElement('textarea');
-    el.value = hex;
-    document.body.appendChild(el);
-    el.select();
-    document.execCommand('copy');
-    document.body.removeChild(el);
-  }
-}
-
 export function ColorSwatch({ hex, name, size = 'sm' }: SwatchProps) {
-  const [copied, setCopied] = useState(false);
-
-  const handleCopy = useCallback(
-    async (e: MouseEvent<HTMLButtonElement>) => {
-      e.stopPropagation();
-      await copyHex(hex);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1200);
-    },
-    [hex],
-  );
+  const { copied, handleCopy } = useColorCopy();
+  const isCopied = copied === hex;
 
   return (
     <button
       type="button"
-      className={`color-swatch color-swatch--${size} ${copied ? 'color-swatch--copied' : ''}`}
+      className={`color-swatch color-swatch--${size} ${isCopied ? 'color-swatch--copied' : ''}`}
       style={{ '--swatch-color': hex } as CSSProperties}
-      onClick={handleCopy}
+      onClick={(e) => handleCopy(e, hex)}
       aria-label={`${name} ${hex} 복사`}
       title={hex}
     >
-      {copied && (
+      {isCopied && (
         <span className="color-swatch__check" aria-hidden="true">
           ✓
         </span>
       )}
       <span className="color-swatch__tooltip">
-        {copied ? '복사됨!' : hex}
+        {isCopied ? '복사됨!' : hex}
       </span>
     </button>
   );
@@ -59,24 +38,18 @@ interface ColorChipCopyProps {
 }
 
 export function ColorChipCopy({ hex }: ColorChipCopyProps) {
-  const [copied, setCopied] = useState(false);
-
-  const handleCopy = async (e: MouseEvent<HTMLButtonElement>) => {
-    e.stopPropagation();
-    await copyHex(hex);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 1200);
-  };
+  const { copied, handleCopy } = useColorCopy();
+  const isCopied = copied === hex;
 
   return (
     <button
       type="button"
       className="trend-card__color-chip-copy"
-      data-copied={copied ? 'true' : undefined}
-      onClick={handleCopy}
+      data-copied={isCopied ? 'true' : undefined}
+      onClick={(e) => handleCopy(e, hex)}
       aria-label={`${hex} 복사`}
     >
-      {copied ? '복사됨' : '복사'}
+      {isCopied ? '✓ 복사됨' : '복사'}
     </button>
   );
 }

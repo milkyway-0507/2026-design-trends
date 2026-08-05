@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
+import { usePreviewVariant } from './PreviewVariantContext';
 
 interface PreviewCanvasProps {
   children: ReactNode;
@@ -14,11 +15,13 @@ export function PreviewCanvas({
   className,
 }: PreviewCanvasProps) {
   const reducedMotion = useReducedMotion();
+  const variant = usePreviewVariant();
 
   return (
     <div
       className={[
         'preview-canvas',
+        variant === 'card' && 'preview-canvas--card',
         reducedMotion && 'preview-canvas--static',
         className,
       ]

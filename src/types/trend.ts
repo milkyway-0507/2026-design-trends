@@ -35,7 +35,21 @@ export type PreviewType =
   | 'glass'
   | 'brutalist'
   | 'accessibility'
-  | 'mx-agent';
+  | 'mx-agent'
+  | 'liquid-glass'
+  | 'bento-grid'
+  | 'cinematic-dark'
+  | 'ambient-ai'
+  | 'low-stimulus'
+  | 'motion-identity'
+  | 'generative-ui'
+  | 'expressive-typography'
+  | 'contextual-nav'
+  | 'ai-readability'
+  | 'functional-minimalism'
+  | 'mature-dark-mode'
+  | 'predictive-ux'
+  | 'digital-texture';
 
 /** 팔레트 색상 역할 */
 export type ColorRole =

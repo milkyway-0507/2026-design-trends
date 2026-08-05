@@ -306,9 +306,14 @@ body {
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--color-text-muted);
   white-space: nowrap;
   flex-shrink: 0;
+}
+
+.marquee-band__item,
+[class*='marquee-item'],
+[class*='marquee__item'] {
+  color: rgba(255, 255, 255, 0.38) !important;
 }
 
 .marquee-band__item::after {
@@ -332,7 +337,11 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .marquee-band__track { animation: none; }
+  .marquee-band__track,
+  [class*='marquee__track'],
+  [class*='marquee-track'] {
+    animation: none !important;
+  }
 }
 
 /* ── 6. TRENDS SECTION ───────────────────────────────────── */
@@ -466,22 +475,69 @@ body {
 
 /* colour preview area */
 .trend-card__preview {
-  height: 140px;
+  height: 160px;
   position: relative;
   overflow: hidden;
   flex-shrink: 0;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  background: var(--color-bg-secondary);
 }
 
 .trend-card__preview-gradient {
   position: absolute;
   inset: 0;
-  opacity: 0.88;
-  transition: opacity 0.3s, transform 0.4s var(--ease-out);
+  transition: transform 0.4s var(--ease-out);
 }
 
 .trend-card:hover .trend-card__preview-gradient {
-  opacity: 1;
-  transform: scale(1.04);
+  transform: scale(1.05);
+}
+
+.trend-card__preview-live {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: transform 0.4s var(--ease-out);
+}
+
+.trend-card__preview-live .preview-canvas {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  border-radius: 0;
+}
+
+.trend-card__preview-live .preview-skeleton {
+  min-height: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: 0;
+}
+
+.trend-card:hover .trend-card__preview-live {
+  transform: scale(1.03);
+}
+
+.trend-card__preview-skeleton {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    var(--color-bg-secondary) 25%,
+    var(--color-bg-elevated) 50%,
+    var(--color-bg-secondary) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trend-card__preview-skeleton {
+    animation: none;
+  }
 }
 
 /* swatches */
@@ -494,6 +550,7 @@ body {
   list-style: none;
   padding: 0;
   margin: 0;
+  z-index: 2;
 }
 
 .trend-card__swatch {
@@ -611,11 +668,11 @@ body {
 .modal__content {
   background: var(--color-bg-elevated);
   border: 1px solid var(--color-border-strong);
-  border-radius: var(--radius-xl);
-  box-shadow: 0 40px 100px rgba(0,0,0,0.7);
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.7);
 }
 
 .modal__header {
+  background: var(--color-bg-elevated);
   border-bottom-color: var(--color-border-default);
 }
 
@@ -710,3 +767,12 @@ body {
   outline: 2px solid var(--color-accent);
   outline-offset: 3px;
 }
+
+.trend-card:focus-visible,
+[class*='trend-card']:focus-visible {
+  outline: 2px solid #c8b4ff;
+  outline-offset: 2px;
+}
+
+/* 기존 전역 :focus-visible이 있으면 카드에도 포인트 컬러가 오도록
+   위 선택자가 더 구체적이므로 덮어씌워짐 — 별도 충돌 없음 */

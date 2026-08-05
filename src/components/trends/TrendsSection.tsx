@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import {
   CategoryFilter,
   StatusFilterBar,
@@ -14,9 +14,15 @@ import { TrendGrid } from './TrendGrid';
 
 interface TrendsSectionProps {
   onSelectTrend?: (trend: Trend) => void;
+  onFilteredTrendsChange?: (trends: Trend[]) => void;
+  onActiveCategoryChange?: (category: TrendCategory) => void;
 }
 
-export function TrendsSection({ onSelectTrend }: TrendsSectionProps) {
+export function TrendsSection({
+  onSelectTrend,
+  onFilteredTrendsChange,
+  onActiveCategoryChange,
+}: TrendsSectionProps) {
   const categories = getCategories();
   const statusFilters = getStatusFilters();
   const allTrends = getTrends();
@@ -40,6 +46,14 @@ export function TrendsSection({ onSelectTrend }: TrendsSectionProps) {
   const handleSelect = (trend: Trend) => {
     onSelectTrend?.(trend);
   };
+
+  useEffect(() => {
+    onFilteredTrendsChange?.(isTypographyView ? [] : filteredTrends);
+  }, [filteredTrends, isTypographyView, onFilteredTrendsChange]);
+
+  useEffect(() => {
+    onActiveCategoryChange?.(activeCategory);
+  }, [activeCategory, onActiveCategoryChange]);
 
   return (
     <section className="trends-section" aria-labelledby="trends-section-title">
@@ -77,6 +91,7 @@ export function TrendsSection({ onSelectTrend }: TrendsSectionProps) {
         ) : (
           <TrendGrid
             trends={filteredTrends}
+            activeCategory={activeCategory}
             panelId={TRENDS_PANEL_ID}
             panelLabelledBy={panelLabelledBy}
             onSelectTrend={handleSelect}

@@ -306,9 +306,14 @@ body {
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--color-text-muted);
   white-space: nowrap;
   flex-shrink: 0;
+}
+
+.marquee-band__item,
+[class*='marquee-item'],
+[class*='marquee__item'] {
+  color: rgba(255, 255, 255, 0.38) !important;
 }
 
 .marquee-band__item::after {
@@ -332,7 +337,11 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .marquee-band__track { animation: none; }
+  .marquee-band__track,
+  [class*='marquee__track'],
+  [class*='marquee-track'] {
+    animation: none !important;
+  }
 }
 
 /* ── 6. TRENDS SECTION ───────────────────────────────────── */
@@ -742,3 +751,12 @@ body {
   outline: 2px solid var(--color-accent);
   outline-offset: 3px;
 }
+
+.trend-card:focus-visible,
+[class*='trend-card']:focus-visible {
+  outline: 2px solid #c8b4ff;
+  outline-offset: 2px;
+}
+
+/* 기존 전역 :focus-visible이 있으면 카드에도 포인트 컬러가 오도록
+   위 선택자가 더 구체적이므로 덮어씌워짐 — 별도 충돌 없음 */

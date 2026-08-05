@@ -1,47 +1,133 @@
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import type { Trend } from '@/types';
 import { DIFFICULTY_LABELS } from '@/types';
 import { getCategoryLabel } from '@/utils/category';
-import { TrendPreviewRenderer } from '@/components/previews';
+import { TrendPreview } from '@/components/previews';
 
 interface TrendPreviewModalProps {
   trend: Trend | null;
+  showColorPalette?: boolean;
   onClose: () => void;
+  onPrev: () => void;
+  onNext: () => void;
+  hasPrev: boolean;
+  hasNext: boolean;
+  currentIndex: number;
+  total: number;
 }
 
-export function TrendPreviewModal({ trend, onClose }: TrendPreviewModalProps) {
+export function TrendPreviewModal({
+  trend,
+  showColorPalette = false,
+  onClose,
+  onPrev,
+  onNext,
+  hasPrev,
+  hasNext,
+  currentIndex,
+  total,
+}: TrendPreviewModalProps) {
   const closeBtnRef = useRef<HTMLButtonElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [shareCopied, setShareCopied] = useState(false);
+  const [copiedHex, setCopiedHex] = useState<string | null>(null);
+
+  const handleCopy = useCallback(async (hex: string) => {
+    try {
+      await navigator.clipboard.writeText(hex);
+    } catch {
+      const el = document.createElement('textarea');
+      el.value = hex;
+      el.style.cssText = 'position:fixed;opacity:0';
+      document.body.appendChild(el);
+      el.select();
+      document.execCommand('copy');
+      document.body.removeChild(el);
+    }
+    setCopiedHex(hex);
+    window.setTimeout(() => setCopiedHex(null), 1400);
+  }, []);
+
+  const handleShare = useCallback(async () => {
+    const url = window.location.href;
+    try {
+      await navigator.clipboard.writeText(url);
+      setShareCopied(true);
+      window.setTimeout(() => setShareCopied(false), 2000);
+    } catch {
+      const textarea = document.createElement('textarea');
+      textarea.value = url;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        document.execCommand('copy');
+        setShareCopied(true);
+        window.setTimeout(() => setShareCopied(false), 2000);
+      } catch {
+        /* ignore */
+      } finally {
+        document.body.removeChild(textarea);
+      }
+    }
+  }, []);
 
   const handleKeyDown = useCallback(
     (event: KeyboardEvent) => {
       if (event.key === 'Escape') onClose();
+      if (event.key === 'ArrowLeft' && hasPrev) onPrev();
+      if (event.key === 'ArrowRight' && hasNext) onNext();
     },
-    [onClose],
+    [onClose, onPrev, onNext, hasPrev, hasNext],
   );
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [handleKeyDown]);
+
+  useEffect(() => {
+    const scrollY = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = '100%';
+    closeBtnRef.current?.focus();
+
+    return () => {
+      const savedScrollY = Math.abs(
+        parseInt(document.body.style.top || '0', 10),
+      );
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      window.scrollTo(0, savedScrollY);
+    };
+  }, []);
 
   useEffect(() => {
     if (!trend) return;
 
-    document.addEventListener('keydown', handleKeyDown);
-    document.body.style.overflow = 'hidden';
-    closeBtnRef.current?.focus();
-
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = '';
-    };
-  }, [trend, handleKeyDown]);
+    contentRef.current?.scrollTo({ top: 0, behavior: 'auto' });
+    setShareCopied(false);
+    setCopiedHex(null);
+  }, [trend?.id]);
 
   if (!trend) return null;
 
   return (
-    <div className="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div
+      className="modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
+    >
       <div
         className="modal__backdrop"
         onClick={onClose}
         aria-hidden="true"
       />
-      <div className="modal__content">
+      <div ref={contentRef} className="modal__content">
         <header className="modal__header">
           <div className="modal__meta">
             {trend.categories.map((cat) => (
@@ -53,6 +139,33 @@ export function TrendPreviewModal({ trend, onClose }: TrendPreviewModalProps) {
               {DIFFICULTY_LABELS[trend.difficulty]}
             </span>
           </div>
+
+          <div className="modal__nav">
+            <button
+              type="button"
+              className="modal__nav-btn"
+              onClick={onPrev}
+              disabled={!hasPrev}
+              aria-label="이전 트렌드"
+            >
+              ←
+            </button>
+
+            <span className="modal__nav-count">
+              {currentIndex + 1} / {total}
+            </span>
+
+            <button
+              type="button"
+              className="modal__nav-btn"
+              onClick={onNext}
+              disabled={!hasNext}
+              aria-label="다음 트렌드"
+            >
+              →
+            </button>
+          </div>
+
           <button
             ref={closeBtnRef}
             type="button"
@@ -65,8 +178,31 @@ export function TrendPreviewModal({ trend, onClose }: TrendPreviewModalProps) {
         </header>
 
         <div className="modal__preview">
-          <TrendPreviewRenderer trend={trend} />
+          <TrendPreview trend={trend} />
         </div>
+
+        {showColorPalette && (
+          <div className="modal__colors">
+            {trend.colors.map((color) => (
+              <button
+                key={color.hex}
+                type="button"
+                className={`modal__color-item ${copiedHex === color.hex ? 'modal__color-item--copied' : ''}`}
+                onClick={() => handleCopy(color.hex)}
+                aria-label={`${color.name} ${color.hex} 복사`}
+              >
+                <span
+                  className="modal__color-dot"
+                  style={{ background: color.hex }}
+                />
+                <span className="modal__color-hex">{color.hex}</span>
+                <span className="modal__color-action">
+                  {copiedHex === color.hex ? '✓' : '복사'}
+                </span>
+              </button>
+            ))}
+          </div>
+        )}
 
         <div className="modal__body">
           <h2 id="modal-title" className="modal__title">
@@ -112,6 +248,14 @@ export function TrendPreviewModal({ trend, onClose }: TrendPreviewModalProps) {
                 ↗ {source.title}
               </a>
             ))}
+            <button
+              type="button"
+              className="modal__share-btn"
+              onClick={handleShare}
+              aria-label="이 트렌드 링크 복사"
+            >
+              {shareCopied ? '✓ 복사됨' : '🔗 링크 복사'}
+            </button>
           </footer>
         </div>
       </div>

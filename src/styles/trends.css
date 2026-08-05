@@ -148,14 +148,13 @@
 
 .trend-card__preview {
   position: relative;
-  height: 120px;
+  height: 160px;
   overflow: hidden;
 }
 
 .trend-card__preview-gradient {
   position: absolute;
   inset: 0;
-  opacity: 0.85;
 }
 
 .trend-card__swatches {

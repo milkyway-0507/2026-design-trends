@@ -32,6 +32,14 @@ export function FontCard({ font }: FontCardProps) {
             {CATEGORY_LABEL[font.category]}
           </span>
           {font.isNew && <span className="font-card__new-badge">NEW</span>}
+          {font.supportsKorean && (
+            <span className="font-card__locale-badge">한국어</span>
+          )}
+          {font.supportsJapanese && (
+            <span className="font-card__locale-badge font-card__locale-badge--jp">
+              日本語
+            </span>
+          )}
           <span
             className="font-card__status"
             style={{ '--status-color': status.color } as CSSProperties}

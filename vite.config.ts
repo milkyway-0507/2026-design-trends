@@ -17,7 +17,9 @@ export default defineConfig({
       output: {
         manualChunks(id) {
           if (id.includes('framer-motion')) return 'motion';
-          if (id.includes('/components/previews/')) return 'previews';
+          if (id.includes('/components/previews/PreviewCanvas')) {
+            return 'preview-shared';
+          }
           if (
             id.includes('node_modules/react-dom') ||
             id.includes('node_modules/react/')
