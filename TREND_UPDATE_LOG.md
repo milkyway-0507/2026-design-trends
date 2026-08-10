@@ -11,3 +11,7 @@
 ## 2026-08-05 업데이트
 - 추가된 트렌드: **앰비언트 AI 인터페이스** (ambient-ai-interface), **리퀴드 글래스모피즘** (liquid-glass-morphism)
 - 총 트렌드 수: 35개
+
+## 2026-08-10 업데이트
+- 추가된 트렌드: **앰비언트 AI 인터페이스** (ambient-ai-interface), **리퀴드 벤토 그리드** (liquid-bento-grid)
+- 총 트렌드 수: 34개

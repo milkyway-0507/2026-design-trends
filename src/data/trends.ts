@@ -505,6 +505,140 @@ export const trends: Trend[] = [
     "lastUpdated": "2026-08-05",
     "month": "8월 신규"
   },
+
+  {
+    "id": "ambient-ai-interface",
+    "nameKo": "앰비언트 AI 인터페이스",
+    "nameEn": "Ambient AI Interface",
+    "tagline": "인터페이스의 경계를 넘어 환경 속에 자연스럽게 녹아드는 AI 경험",
+    "description": "사용자가 별도의 명령을 입력하지 않아도 맥락을 파악해 선제적으로 반응하는 디자인입니다. 화면 중심의 UI에서 벗어나 사용자 주변의 환경과 상태를 데이터로 활용합니다.",
+    "detailDescription": "기존의 앱 중심 인터페이스가 아닌, 사용자의 상황을 인지하고 AI가 보이지 않는 곳에서 작업을 수행하는 보이지 않는 UI(Invisible UI)를 지향합니다. 노티피케이션이나 복잡한 대시보드 대신 사용자의 의도를 먼저 읽고 필요한 시점에 필요한 정보를 최소한으로 제시하는 적응형 인터페이스 설계를 특징으로 합니다.",
+    "categories": [
+      "ai-ux",
+      "interaction"
+    ],
+    "difficulty": "advanced",
+    "keywords": [
+      "앰비언트",
+      "상황 인지",
+      "보이지 않는 UI"
+    ],
+    "colors": [
+      {
+        "name": "Soft Fog",
+        "hex": "#F4F7F6",
+        "role": "primary"
+      },
+      {
+        "name": "Ghost Blue",
+        "hex": "#A8C3D0",
+        "role": "accent"
+      },
+      {
+        "name": "Mist Grey",
+        "hex": "#D1D5DB",
+        "role": "secondary"
+      },
+      {
+        "name": "Pure Cloud",
+        "hex": "#FFFFFF",
+        "role": "background"
+      },
+      {
+        "name": "Slate",
+        "hex": "#374151",
+        "role": "neutral"
+      }
+    ],
+    "brands": [
+      {
+        "name": "NeuralPath",
+        "context": "주변 상황 자동 최적화 시스템",
+        "url": "https://neuralpath.ai"
+      }
+    ],
+    "sources": [
+      {
+        "title": "The Era of Ambient Computing",
+        "url": "https://design-trend.com/ambient-ai",
+        "publisher": "UI/UX Insight"
+      }
+    ],
+    "previewType": "ambient-ai",
+    "publishedAt": "2026-08",
+    "updatedAt": "2026-08-10",
+    "isNew": true,
+    "status": "rising",
+    "lastUpdated": "2026-08-10",
+    "month": "8월 신규"
+  },
+
+  {
+    "id": "liquid-bento-grid",
+    "nameKo": "리퀴드 벤토 그리드",
+    "nameEn": "Liquid Bento Grid",
+    "tagline": "고정된 틀을 깨고 유동적으로 변화하는 입체적 벤토 그리드",
+    "description": "기존의 정적인 벤토 박스 레이아웃을 진화시켜 사용자 반응에 따라 크기와 위치가 유연하게 변하는 레이아웃입니다. 공간의 효율성과 시각적 즐거움을 동시에 충족합니다.",
+    "detailDescription": "데이터의 우선순위에 따라 레이아웃의 구획이 실시간으로 재배치되는 적응형 그리드 시스템입니다. 단순한 격자 구조를 넘어 유체처럼 흐르는 애니메이션 전환과 깊이감을 활용해 정보의 계층 구조를 직관적으로 전달하는 것이 핵심입니다.",
+    "categories": [
+      "layout",
+      "motion"
+    ],
+    "difficulty": "medium",
+    "keywords": [
+      "레이아웃",
+      "벤토 그리드",
+      "반응형 레이아웃"
+    ],
+    "colors": [
+      {
+        "name": "Electric Violet",
+        "hex": "#8B5CF6",
+        "role": "primary"
+      },
+      {
+        "name": "Neon Cyan",
+        "hex": "#22D3EE",
+        "role": "accent"
+      },
+      {
+        "name": "Soft Indigo",
+        "hex": "#C7D2FE",
+        "role": "secondary"
+      },
+      {
+        "name": "Void Black",
+        "hex": "#0F172A",
+        "role": "background"
+      },
+      {
+        "name": "Cool Steel",
+        "hex": "#94A3B8",
+        "role": "neutral"
+      }
+    ],
+    "brands": [
+      {
+        "name": "FluxBox",
+        "context": "동적 레이아웃 라이브러리 제공",
+        "url": "https://fluxbox-ui.dev"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Fluid Layouts in 2026",
+        "url": "https://design-trend.com/liquid-bento",
+        "publisher": "Design Weekly"
+      }
+    ],
+    "previewType": "liquid-glass",
+    "publishedAt": "2026-08",
+    "updatedAt": "2026-08-10",
+    "isNew": true,
+    "status": "rising",
+    "lastUpdated": "2026-08-10",
+    "month": "8월 신규"
+  },
 ] // END_TRENDS
 
 export const trendsDataset: TrendsDataset = {
@@ -512,7 +646,7 @@ export const trendsDataset: TrendsDataset = {
     title: '2026 디자인 트렌드',
     subtitle:
       '올해 주목해야 할 디자인 방향을 한국어로 큐레이션하고 직접 체험하세요.',
-    lastUpdated: '2026-08-05',
+    lastUpdated: '2026-08-10',
   },
   categories: [
     { id: 'color', label: '컬러' },
