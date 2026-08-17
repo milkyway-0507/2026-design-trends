@@ -639,6 +639,140 @@ export const trends: Trend[] = [
     "lastUpdated": "2026-08-10",
     "month": "8월 신규"
   },
+
+  {
+    "id": "ambient-ai-interface",
+    "nameKo": "앰비언트 AI 인터페이스",
+    "nameEn": "Ambient AI Interface",
+    "tagline": "인터페이스의 경계를 넘어 맥락 속에 녹아드는 지능형 환경",
+    "description": "사용자가 별도의 입력을 하지 않아도 주변 상황을 인식하여 능동적으로 UI를 변화시키는 인터페이스 설계 방식입니다. 사용자의 작업 흐름을 방해하지 않으면서 필요한 기능을 적재적소에 배치하는 것이 핵심입니다.",
+    "detailDescription": "앰비언트 AI는 시각적 오버헤드를 줄이고, 사용자의 의도를 사전에 파악하여 인터페이스를 투명하게 만듭니다. 시스템이 공간과 상황을 인지하여 필요한 도구만 활성화하며, AI 에이전트가 인터페이스의 일부로서 원활하게 통합되어 상호작용의 복잡도를 획기적으로 낮춥니다.",
+    "categories": [
+      "ai-ux",
+      "interaction"
+    ],
+    "difficulty": "advanced",
+    "keywords": [
+      "상황인지",
+      "무형 인터페이스",
+      "앰비언트 컴퓨팅"
+    ],
+    "colors": [
+      {
+        "name": "Deep Space",
+        "hex": "#0F172A",
+        "role": "primary"
+      },
+      {
+        "name": "Soft Glow",
+        "hex": "#818CF8",
+        "role": "accent"
+      },
+      {
+        "name": "Fog Grey",
+        "hex": "#94A3B8",
+        "role": "secondary"
+      },
+      {
+        "name": "Void Black",
+        "hex": "#020617",
+        "role": "background"
+      },
+      {
+        "name": "Mist White",
+        "hex": "#F1F5F9",
+        "role": "neutral"
+      }
+    ],
+    "brands": [
+      {
+        "name": "NeuralFlow",
+        "context": "주변 환경에 따라 레이아웃이 유동적으로 변하는 OS",
+        "url": "https://neuralflow.example.com"
+      }
+    ],
+    "sources": [
+      {
+        "title": "The Future of Contextual UX",
+        "url": "https://design-trends.example.com/ambient",
+        "publisher": "Design Insights"
+      }
+    ],
+    "previewType": "ambient-ai",
+    "publishedAt": "2026-08",
+    "updatedAt": "2026-08-17",
+    "isNew": true,
+    "status": "rising",
+    "lastUpdated": "2026-08-17",
+    "month": "8월 신규"
+  },
+
+  {
+    "id": "low-stimulus-design",
+    "nameKo": "저자극 디자인",
+    "nameEn": "Low Stimulus Design",
+    "tagline": "디지털 피로도를 낮추는 평온한 사용자 경험",
+    "description": "과도한 알림, 강력한 대비, 현란한 애니메이션을 배제하여 사용자의 인지적 부하를 최소화하는 디자인 철학입니다. 정보를 차분하게 전달하며 심리적 안정감을 제공하는 데 중점을 둡니다.",
+    "detailDescription": "정보 과잉 시대에 대한 반작용으로, 조용한 UI와 여백의 미를 극대화합니다. 눈의 피로를 방지하는 부드러운 색조와 서체 설정을 통해 사용자가 서비스에 머무는 동안 평온한 상태를 유지할 수 있도록 설계합니다.",
+    "categories": [
+      "visual",
+      "layout"
+    ],
+    "difficulty": "easy",
+    "keywords": [
+      "디지털 웰빙",
+      "인지적 여백",
+      "차분한 UI"
+    ],
+    "colors": [
+      {
+        "name": "Sage Green",
+        "hex": "#84A98C",
+        "role": "primary"
+      },
+      {
+        "name": "Warm Sand",
+        "hex": "#E9EDC9",
+        "role": "accent"
+      },
+      {
+        "name": "Muted Slate",
+        "hex": "#6C757D",
+        "role": "secondary"
+      },
+      {
+        "name": "Soft Paper",
+        "hex": "#F8F9FA",
+        "role": "background"
+      },
+      {
+        "name": "Neutral Stone",
+        "hex": "#DDE5B6",
+        "role": "neutral"
+      }
+    ],
+    "brands": [
+      {
+        "name": "CalmFlow",
+        "context": "인지 부하를 최소화한 생산성 도구",
+        "url": "https://calmflow.example.com"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Designing for Cognitive Health",
+        "url": "https://ux-wellbeing.example.com/low-stim",
+        "publisher": "UI Trends Weekly"
+      }
+    ],
+    "previewType": "low-stimulus",
+    "publishedAt": "2026-08",
+    "updatedAt": "2026-08-17",
+    "isNew": true,
+    "status": "rising",
+    "lastUpdated": "2026-08-17",
+    "month": "8월 신규"
+  },
 ] // END_TRENDS
 
 export const trendsDataset: TrendsDataset = {
@@ -646,7 +780,7 @@ export const trendsDataset: TrendsDataset = {
     title: '2026 디자인 트렌드',
     subtitle:
       '올해 주목해야 할 디자인 방향을 한국어로 큐레이션하고 직접 체험하세요.',
-    lastUpdated: '2026-08-10',
+    lastUpdated: '2026-08-17',
   },
   categories: [
     { id: 'color', label: '컬러' },
