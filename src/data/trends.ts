@@ -773,6 +773,139 @@ export const trends: Trend[] = [
     "lastUpdated": "2026-08-17",
     "month": "8월 신규"
   },
+
+  {
+    "id": "ambient-ai",
+    "nameKo": "앰비언트 AI 인터페이스",
+    "nameEn": "Ambient AI Interface",
+    "tagline": "사용자의 의도를 배경에서 감지하여 자연스럽게 반응하는 UI",
+    "description": "사용자가 직접 명령하지 않아도 컨텍스트를 파악해 필요한 정보를 적시에 제공합니다. 인터페이스의 경계를 허물고 상황에 따라 스스로 변화하는 지능형 환경을 구축합니다.",
+    "detailDescription": "전통적인 버튼 기반의 상호작용에서 벗어나, 센서 데이터와 사용자 행동 패턴을 분석하여 인터페이스 자체가 배경처럼 녹아드는 디자인입니다. AI 에이전트가 서비스의 일부가 아닌 서비스 그 자체가 되어 복잡한 단계를 생략합니다.",
+    "categories": [
+      "ai-ux"
+    ],
+    "difficulty": "advanced",
+    "keywords": [
+      "앰비언트 컴퓨팅",
+      "지능형 UI",
+      "컨텍스트 인지"
+    ],
+    "colors": [
+      {
+        "name": "에테리얼 블루",
+        "hex": "#E0F7FA",
+        "role": "primary"
+      },
+      {
+        "name": "글로우 퍼플",
+        "hex": "#7E57C2",
+        "role": "accent"
+      },
+      {
+        "name": "소프트 그레이",
+        "hex": "#CFD8DC",
+        "role": "secondary"
+      },
+      {
+        "name": "딥 다크 매트",
+        "hex": "#121212",
+        "role": "background"
+      },
+      {
+        "name": "클리어 화이트",
+        "hex": "#FFFFFF",
+        "role": "neutral"
+      }
+    ],
+    "brands": [
+      {
+        "name": "Google",
+        "context": "차세대 픽셀 환경에서의 앰비언트 AI 적용 사례",
+        "url": "https://google.com"
+      }
+    ],
+    "sources": [
+      {
+        "title": "2026 AI Experience Report",
+        "url": "https://design-trends.com/ambient",
+        "publisher": "Design Insights"
+      }
+    ],
+    "previewType": "ambient-ai",
+    "publishedAt": "2026-08",
+    "updatedAt": "2026-08-24",
+    "isNew": true,
+    "status": "rising",
+    "lastUpdated": "2026-08-24",
+    "month": "8월 신규"
+  },
+
+  {
+    "id": "low-stimulus",
+    "nameKo": "로우 스티뮬러스 디자인",
+    "nameEn": "Low-Stimulus Design",
+    "tagline": "디지털 피로도를 최소화하는 정적인 고요함의 미학",
+    "description": "과도한 애니메이션과 화려한 효과를 배제하고 차분한 타이포그래피와 여백을 강조합니다. 사용자의 집중력을 높이고 인지 부하를 줄이는 데 최적화되어 있습니다.",
+    "detailDescription": "정보 과부하 시대에 대한 반작용으로, 의도적으로 낮은 채도의 팔레트와 정적인 레이아웃을 채택합니다. 명확한 정보 계층 구조와 정제된 인터랙션을 통해 사용자가 본질적인 작업에 몰입할 수 있도록 돕습니다.",
+    "categories": [
+      "layout",
+      "visual"
+    ],
+    "difficulty": "easy",
+    "keywords": [
+      "디지털 디톡스",
+      "미니멀리즘",
+      "몰입형 인터페이스"
+    ],
+    "colors": [
+      {
+        "name": "세이지 그린",
+        "hex": "#A3B18A",
+        "role": "primary"
+      },
+      {
+        "name": "웜 샌드",
+        "hex": "#D4A373",
+        "role": "accent"
+      },
+      {
+        "name": "오프 화이트",
+        "hex": "#FAEDCD",
+        "role": "secondary"
+      },
+      {
+        "name": "페일 스톤",
+        "hex": "#FEFAE0",
+        "role": "background"
+      },
+      {
+        "name": "차콜 브라운",
+        "hex": "#3A3A3A",
+        "role": "neutral"
+      }
+    ],
+    "brands": [
+      {
+        "name": "Calm-UI",
+        "context": "정적인 정보 전달을 최우선으로 하는 웹 프레임워크",
+        "url": "https://calm-ui.example.com"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Calm Tech Design Principles",
+        "url": "https://ux-archive.com/calm",
+        "publisher": "UX Collective"
+      }
+    ],
+    "previewType": "low-stimulus",
+    "publishedAt": "2026-08",
+    "updatedAt": "2026-08-24",
+    "isNew": true,
+    "status": "rising",
+    "lastUpdated": "2026-08-24",
+    "month": "8월 신규"
+  },
 ] // END_TRENDS
 
 export const trendsDataset: TrendsDataset = {
@@ -780,7 +913,7 @@ export const trendsDataset: TrendsDataset = {
     title: '2026 디자인 트렌드',
     subtitle:
       '올해 주목해야 할 디자인 방향을 한국어로 큐레이션하고 직접 체험하세요.',
-    lastUpdated: '2026-08-17',
+    lastUpdated: '2026-08-24',
   },
   categories: [
     { id: 'color', label: '컬러' },
