@@ -906,6 +906,140 @@ export const trends: Trend[] = [
     "lastUpdated": "2026-08-24",
     "month": "8월 신규"
   },
+
+  {
+    "id": "generative-ui",
+    "nameKo": "생성형 유저 인터페이스",
+    "nameEn": "Generative UI",
+    "tagline": "사용자의 의도에 따라 실시간으로 변화하는 맞춤형 인터페이스",
+    "description": "고정된 레이아웃에서 벗어나 사용자의 맥락과 질문에 맞춰 UI 컴포넌트가 동적으로 생성되는 방식입니다. LLM의 실시간 데이터를 기반으로 개인화된 경험을 제공합니다.",
+    "detailDescription": "기존의 정적인 정적 UI를 넘어, 시스템이 사용자 의도를 파악하고 최적의 레이아웃, 데이터 시각화, 입력 도구를 즉석에서 조합하여 화면을 재구성합니다. 이는 복잡한 대시보드를 단순화하고 정보 탐색 효율을 극대화합니다.",
+    "categories": [
+      "ai-ux",
+      "layout"
+    ],
+    "difficulty": "advanced",
+    "keywords": [
+      "Generative AI",
+      "Dynamic Layout",
+      "Real-time UI"
+    ],
+    "colors": [
+      {
+        "name": "Deep Indigo",
+        "hex": "#312E81",
+        "role": "primary"
+      },
+      {
+        "name": "Electric Cyan",
+        "hex": "#06B6D4",
+        "role": "accent"
+      },
+      {
+        "name": "Soft Lavender",
+        "hex": "#E0E7FF",
+        "role": "secondary"
+      },
+      {
+        "name": "Pure White",
+        "hex": "#FFFFFF",
+        "role": "background"
+      },
+      {
+        "name": "Slate Gray",
+        "hex": "#64748B",
+        "role": "neutral"
+      }
+    ],
+    "brands": [
+      {
+        "name": "Vercel AI SDK",
+        "context": "AI 기반의 동적 UI 컴포넌트 렌더링 프레임워크",
+        "url": "https://sdk.vercel.ai"
+      }
+    ],
+    "sources": [
+      {
+        "title": "The Future of Interface: Generative UI",
+        "url": "https://uxdesign.cc/generative-ui-2026",
+        "publisher": "UX Design Collective"
+      }
+    ],
+    "previewType": "generative-ui",
+    "publishedAt": "2026-08",
+    "updatedAt": "2026-08-31",
+    "isNew": true,
+    "status": "rising",
+    "lastUpdated": "2026-08-31",
+    "month": "8월 신규"
+  },
+
+  {
+    "id": "low-stimulus",
+    "nameKo": "저자극 인터페이스",
+    "nameEn": "Low Stimulus Design",
+    "tagline": "디지털 피로를 줄이는 차분하고 절제된 디자인 철학",
+    "description": "화려한 애니메이션과 강렬한 색상을 배제하고, 사용자에게 심리적 안정감을 주는 여백과 부드러운 전환을 중시합니다. 집중력이 중요한 생산성 도구에서 핵심적인 역할을 합니다.",
+    "detailDescription": "정보 과부하 시대에 대응하여 인지 부하를 최소화하는 것을 목표로 합니다. 읽기 좋은 폰트 크기, 충분한 패딩, 절제된 인터랙션 디자인을 통해 사용자가 디지털 환경 속에서도 평온함을 유지하도록 돕습니다.",
+    "categories": [
+      "visual",
+      "accessibility"
+    ],
+    "difficulty": "medium",
+    "keywords": [
+      "Mental Health",
+      "Calm Design",
+      "Whitespace"
+    ],
+    "colors": [
+      {
+        "name": "Warm Sand",
+        "hex": "#F5F5DC",
+        "role": "primary"
+      },
+      {
+        "name": "Sage Green",
+        "hex": "#8A9A5B",
+        "role": "accent"
+      },
+      {
+        "name": "Soft Beige",
+        "hex": "#FDFBF7",
+        "role": "secondary"
+      },
+      {
+        "name": "Off White",
+        "hex": "#F8F9FA",
+        "role": "background"
+      },
+      {
+        "name": "Muted Charcoal",
+        "hex": "#4A4A4A",
+        "role": "neutral"
+      }
+    ],
+    "brands": [
+      {
+        "name": "Calm Flow",
+        "context": "사용자의 집중력을 높이는 미니멀 디자인 앱",
+        "url": "https://calmflow.io"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Designing for Digital Wellbeing",
+        "url": "https://design.google/library/low-stimulus",
+        "publisher": "Google Design"
+      }
+    ],
+    "previewType": "low-stimulus",
+    "publishedAt": "2026-08",
+    "updatedAt": "2026-08-31",
+    "isNew": true,
+    "status": "rising",
+    "lastUpdated": "2026-08-31",
+    "month": "8월 신규"
+  },
 ] // END_TRENDS
 
 export const trendsDataset: TrendsDataset = {
@@ -913,7 +1047,7 @@ export const trendsDataset: TrendsDataset = {
     title: '2026 디자인 트렌드',
     subtitle:
       '올해 주목해야 할 디자인 방향을 한국어로 큐레이션하고 직접 체험하세요.',
-    lastUpdated: '2026-08-24',
+    lastUpdated: '2026-08-31',
   },
   categories: [
     { id: 'color', label: '컬러' },
