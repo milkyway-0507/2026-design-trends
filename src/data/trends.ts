@@ -1040,6 +1040,140 @@ export const trends: Trend[] = [
     "lastUpdated": "2026-08-31",
     "month": "8월 신규"
   },
+
+  {
+    "id": "generative-ui",
+    "nameKo": "생성형 인터페이스",
+    "nameEn": "Generative UI",
+    "tagline": "사용자의 맥락에 따라 실시간으로 변화하는 맞춤형 UI",
+    "description": "고정된 레이아웃에서 벗어나 AI가 사용자의 의도와 상황을 파악해 실시간으로 컴포넌트를 생성합니다. 정보의 우선순위를 즉각적으로 재조정하여 극대화된 효율성을 제공합니다.",
+    "detailDescription": "생성형 UI는 사전 정의된 템플릿의 한계를 넘어섭니다. 사용자가 검색하거나 질문하는 즉시, 관련 데이터를 가장 보기 편한 차트나 리스트 형태로 즉석에서 UI를 렌더링하여 데이터 탐색의 깊이를 더합니다.",
+    "categories": [
+      "ai-ux",
+      "layout"
+    ],
+    "difficulty": "advanced",
+    "keywords": [
+      "AI",
+      "실시간 UI",
+      "적응형 설계"
+    ],
+    "colors": [
+      {
+        "name": "Deep Space",
+        "hex": "#0F172A",
+        "role": "primary"
+      },
+      {
+        "name": "Neon Electric",
+        "hex": "#38BDF8",
+        "role": "accent"
+      },
+      {
+        "name": "Slate Blue",
+        "hex": "#64748B",
+        "role": "secondary"
+      },
+      {
+        "name": "Pure White",
+        "hex": "#F8FAFC",
+        "role": "background"
+      },
+      {
+        "name": "Cool Gray",
+        "hex": "#E2E8F0",
+        "role": "neutral"
+      }
+    ],
+    "brands": [
+      {
+        "name": "Vercel AI SDK",
+        "context": "차세대 생성형 UI 프레임워크 지원",
+        "url": "https://sdk.vercel.ai"
+      }
+    ],
+    "sources": [
+      {
+        "title": "The Future of Generative Interfaces",
+        "url": "https://design.systems/generative-ui",
+        "publisher": "Design Systems Daily"
+      }
+    ],
+    "previewType": "generative-ui",
+    "publishedAt": "2026-09",
+    "updatedAt": "2026-09-07",
+    "isNew": true,
+    "status": "rising",
+    "lastUpdated": "2026-09-07",
+    "month": "9월 신규"
+  },
+
+  {
+    "id": "low-stimulus",
+    "nameKo": "저자극 인터페이스",
+    "nameEn": "Low Stimulus Design",
+    "tagline": "디지털 피로를 줄이는 차분하고 절제된 사용자 환경",
+    "description": "끊임없는 알림과 강렬한 시각 효과로부터 사용자를 보호합니다. 채도를 낮추고 마이크로 인터랙션을 절제하여 평온한 디지털 경험을 조성합니다.",
+    "detailDescription": "주의력 경제 시대의 반작용으로 탄생한 트렌드입니다. 사용자가 본질적인 작업에 집중할 수 있도록 여백을 극대화하고, 부드러운 애니메이션과 차분한 컬러 팔레트를 사용하여 눈의 피로를 최소화합니다.",
+    "categories": [
+      "visual",
+      "accessibility"
+    ],
+    "difficulty": "easy",
+    "keywords": [
+      "디지털 디톡스",
+      "평온함",
+      "미니멀리즘"
+    ],
+    "colors": [
+      {
+        "name": "Sage Green",
+        "hex": "#A7B8A8",
+        "role": "primary"
+      },
+      {
+        "name": "Soft Sand",
+        "hex": "#E8E2D9",
+        "role": "accent"
+      },
+      {
+        "name": "Muted Clay",
+        "hex": "#D4B499",
+        "role": "secondary"
+      },
+      {
+        "name": "Off White",
+        "hex": "#F5F5F5",
+        "role": "background"
+      },
+      {
+        "name": "Stone Gray",
+        "hex": "#BDBDBD",
+        "role": "neutral"
+      }
+    ],
+    "brands": [
+      {
+        "name": "Calm Space",
+        "context": "저자극 인터페이스 적용 사례",
+        "url": "https://calm-ui.example"
+      }
+    ],
+    "sources": [
+      {
+        "title": "Designing for Mental Wellbeing",
+        "url": "https://uxdesign.cc/low-stimulus",
+        "publisher": "UX Collective"
+      }
+    ],
+    "previewType": "low-stimulus",
+    "publishedAt": "2026-09",
+    "updatedAt": "2026-09-07",
+    "isNew": true,
+    "status": "rising",
+    "lastUpdated": "2026-09-07",
+    "month": "9월 신규"
+  },
 ] // END_TRENDS
 
 export const trendsDataset: TrendsDataset = {
@@ -1047,7 +1181,7 @@ export const trendsDataset: TrendsDataset = {
     title: '2026 디자인 트렌드',
     subtitle:
       '올해 주목해야 할 디자인 방향을 한국어로 큐레이션하고 직접 체험하세요.',
-    lastUpdated: '2026-08-31',
+    lastUpdated: '2026-09-07',
   },
   categories: [
     { id: 'color', label: '컬러' },
