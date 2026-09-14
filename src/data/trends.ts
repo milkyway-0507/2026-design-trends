@@ -1174,6 +1174,140 @@ export const trends: Trend[] = [
     "lastUpdated": "2026-09-07",
     "month": "9월 신규"
   },
+
+  {
+    "id": "liquid-glass-morphology",
+    "nameKo": "리퀴드 글래스 몰포로지",
+    "nameEn": "Liquid Glass Morphology",
+    "tagline": "흐르는 듯 유연한 형태와 깊이감을 강조한 글래스모피즘의 진화형",
+    "description": "기존의 딱딱한 창 형태를 벗어나 액체처럼 유연한 곡선과 깊이 있는 투명도를 결합한 디자인 언어입니다. 사용자 시선에 따라 빛의 굴절이 변하는 듯한 효과를 통해 몰입감을 극대화합니다.",
+    "detailDescription": "2026년형 글래스모피즘은 정적인 블러 효과를 넘어 셰이더 기반의 실시간 굴절과 유기적인 형태 변형을 포함합니다. 이는 디지털 인터페이스에 물리적인 존재감을 부여하며, 사용자가 시스템을 보다 부드럽고 자연스러운 객체로 인지하게 합니다.",
+    "categories": [
+      "visual",
+      "interaction"
+    ],
+    "difficulty": "advanced",
+    "keywords": [
+      "글래스모피즘",
+      "유기적 디자인",
+      "셰이더"
+    ],
+    "colors": [
+      {
+        "name": "Deep Ocean",
+        "hex": "#0A192F",
+        "role": "primary"
+      },
+      {
+        "name": "Electric Cyan",
+        "hex": "#00F2FF",
+        "role": "accent"
+      },
+      {
+        "name": "Soft Mist",
+        "hex": "#E0E7FF",
+        "role": "secondary"
+      },
+      {
+        "name": "Glass Dark",
+        "hex": "#1A1A2E",
+        "role": "background"
+      },
+      {
+        "name": "Neutral Fog",
+        "hex": "#8892B0",
+        "role": "neutral"
+      }
+    ],
+    "brands": [
+      {
+        "name": "FluxUI",
+        "context": "차세대 OS 인터페이스 시스템",
+        "url": "https://fluxui.example"
+      }
+    ],
+    "sources": [
+      {
+        "title": "2026 Liquid Design Evolution",
+        "url": "https://design-trends-2026.io",
+        "publisher": "UI Curator"
+      }
+    ],
+    "previewType": "liquid-glass",
+    "publishedAt": "2026-09",
+    "updatedAt": "2026-09-14",
+    "isNew": true,
+    "status": "rising",
+    "lastUpdated": "2026-09-14",
+    "month": "9월 신규"
+  },
+
+  {
+    "id": "ambient-ai-context",
+    "nameKo": "앰비언트 AI 컨텍스트",
+    "nameEn": "Ambient AI Context",
+    "tagline": "사용자의 작업 흐름 속에 자연스럽게 녹아드는 AI 어시스턴트",
+    "description": "별도의 AI 채팅창을 띄우는 대신, 작업 공간 곳곳에 맥락적으로 배치된 AI 컴포넌트입니다. 사용자가 인터페이스를 조작할 때 예측 가능한 제안을 스스로 드러냅니다.",
+    "detailDescription": "앰비언트 AI는 인터페이스의 배경에서 사용자의 의도를 실시간으로 추론하여 필요한 기능을 적시에 제안합니다. 이는 '명령' 기반의 상호작용을 '공동 작업'의 영역으로 전환하며, 사용자 경험의 인지 부하를 획기적으로 줄여줍니다.",
+    "categories": [
+      "ai-ux",
+      "interaction"
+    ],
+    "difficulty": "medium",
+    "keywords": [
+      "AI 어시스턴트",
+      "맥락 디자인",
+      "지능형 UI"
+    ],
+    "colors": [
+      {
+        "name": "Soft Charcoal",
+        "hex": "#2D2D2D",
+        "role": "primary"
+      },
+      {
+        "name": "Warm Gold",
+        "hex": "#FFC107",
+        "role": "accent"
+      },
+      {
+        "name": "Sage Green",
+        "hex": "#A8D5BA",
+        "role": "secondary"
+      },
+      {
+        "name": "Off White",
+        "hex": "#F9F9F9",
+        "role": "background"
+      },
+      {
+        "name": "Slate Gray",
+        "hex": "#707070",
+        "role": "neutral"
+      }
+    ],
+    "brands": [
+      {
+        "name": "SenseFlow",
+        "context": "컨텍스트 기반 AI 워크스페이스",
+        "url": "https://senseflow.example"
+      }
+    ],
+    "sources": [
+      {
+        "title": "The Rise of Ambient Intelligence",
+        "url": "https://ai-ux-future.com",
+        "publisher": "Tech UX Review"
+      }
+    ],
+    "previewType": "ambient-ai",
+    "publishedAt": "2026-09",
+    "updatedAt": "2026-09-14",
+    "isNew": true,
+    "status": "rising",
+    "lastUpdated": "2026-09-14",
+    "month": "9월 신규"
+  },
 ] // END_TRENDS
 
 export const trendsDataset: TrendsDataset = {
@@ -1181,7 +1315,7 @@ export const trendsDataset: TrendsDataset = {
     title: '2026 디자인 트렌드',
     subtitle:
       '올해 주목해야 할 디자인 방향을 한국어로 큐레이션하고 직접 체험하세요.',
-    lastUpdated: '2026-09-07',
+    lastUpdated: '2026-09-14',
   },
   categories: [
     { id: 'color', label: '컬러' },
